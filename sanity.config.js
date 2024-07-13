@@ -2,7 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
-
+import About from "./schemas/About"
 export default defineConfig({
   name: 'default',
   title: 'paparazi',
@@ -13,6 +13,6 @@ export default defineConfig({
   plugins: [structureTool(), visionTool()],
 
   schema: {
-    types: schemaTypes,
+    types: schemaTypes
   },
 })
