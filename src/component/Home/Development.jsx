@@ -4,10 +4,10 @@ import { urlFor } from '../../sanity/client'
 const Development = ({data}) => {
 
   return (
-    <footer class="pt-20 overflow-hidden body-font">
-      <div class="body-font">
-        <div class="flex   items-center mx-auto px-5 py-8 container">
-          <h1 className='font-medium' style={{ fontSize: 'calc(2px + 2vw + 16px)' }}>{data.sec2}</h1>
+    <section class="pt-20 overflow-hidden body-font">
+      <div>
+        <div class="flex items-center mx-auto px-5 py-8 container">
+          <h2 className='font-medium text-6xl max-md:text-3xl'>{data.sec2}</h2>
           <button class="flex border-0 bg-golden ml-auto px-6 py-2 rounded text-white focus:outline-none">{data.sec2button}</button>
         </div>
       </div>
@@ -19,11 +19,11 @@ const Development = ({data}) => {
             <h1 class="my-7 font-medium text-4xl md:mr-24 title-font">{data.sec2heading}</h1>
 
             <p class="leading-relaxed md:mr-48">{data.sec2subheading}</p>
-              <button class="flex justify-start my-10 border border-[#D2940A] px-6 py-2 rounded text-[#D2940A] focus:outline-none">{data.sec2button2}</button>
+              {/* <button class="flex justify-start my-10 border border-[#D2940A] px-6 py-2 rounded text-[#D2940A] focus:outline-none">{data.sec2button2}</button> */}
           </div>
         </div>
       </div>
-    </footer>
+    </section>
   )
 }
 
