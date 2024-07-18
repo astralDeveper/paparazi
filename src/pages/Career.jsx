@@ -1,67 +1,34 @@
-import React from 'react'
-import Careersection1 from '../component/Career/Careercomponent'
-import Careersection2 from '../component/Career/Careersection2'
-import Careersection3 from '../component/Career/Careersection3'
-import Careersection4 from '../component/Career/Careersection4'
+import React, { useEffect, useState } from 'react'
+import Section1 from '../component/Career/Section1'
+import Section2 from '../component/Career/Section2'
+import Section3 from '../component/Career/Section3'
+import Section4 from '../component/Career/Section4'
+import sanityClient from "../sanity/client";
 
+export default function Career() {
+  const [careersData, setCareersData] = useState(null);
 
-const Career = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const career = await sanityClient.fetch(`*[_type == 'Careers']{...}`);
+        setCareersData(career[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  const positions = [
-    {
-      title: "Software Engineer",
-      location: "Tokyo, Japan",
-      type: "Full-Time",
-      vacancies: "01",
-      deadline: "03 June, 2021",
-    },
-    {
-      title: "Marketing Specialist",
-      location: "Moscow,Russia",
-      type: "Part-Time",
-      vacancies: "02",
-      deadline: "15 July, 2021",
-    },
-    {
-      title: "Director of Accounting",
-      location: "Mumbai, India",
-      type: "Contract",
-      vacancies: "03",
-      deadline: "20 August, 2021",
-    },
-    {
-      title: "Software Engineer",
-      location: "Tokyo, Japan",
-      type: "Full-Time",
-      vacancies: "01",
-      deadline: "03 June, 2021",
-    },
-    {
-      title: "Marketing Specialist",
-      location: "New York, USA",
-      type: "Part-Time",
-      vacancies: "02",
-      deadline: "15 July, 2021",
-    },
-    {
-      title: "Director of Accounting",
-      location: "Mumbai, India",
-      type: "Contract",
-      vacancies: "03",
-      deadline: "20 August, 2021",
-    },
-    // Add more positions as needed
-  ];
+    fetchData();
+  }, []);
 
-  
+  if (!careersData) return null;
+
   return (
     <div>
-      <Careersection1/>
-      <Careersection2/>
-      <Careersection3/>
-      <Careersection4 positions={positions} />
+      <Section1 careersData={careersData}/>
+      <Section2 careersData={careersData}/>
+      <Section3 careersData={careersData}/>
+      <Section4 careersData={careersData} />
     </div>
   )
 }
-
-export default Career

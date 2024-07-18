@@ -19,6 +19,11 @@ export default defineType({
         title: 'Case Studies',
         fields: [
           {
+            name: 'image',
+            type: 'image',
+            title: 'image',
+          },
+          {
             name: 'heading',
             type: 'string',
             title: 'Card Heading',

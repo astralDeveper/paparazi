@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import sanityClient, { urlFor } from "../sanity/client";
 import TopSec1Card from '../component/top/TopSec1Card'
 import branch from '../assets/top/section1/Branches.png'
 import branch2 from '../assets/top/section1/Branches2.png'
@@ -38,14 +39,39 @@ const Top = () => {
     }
   };
 
+
+
+
+  const [topData, setTopData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const top = await sanityClient.fetch(`*[_type == 'top']{...}`);
+        setTopData(top[0]);
+        // console.log(top[0]);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!topData) return null;
+  console.log(topData);
+  // console.log(topData.quiz);
+
+
   const handleCheckAnswer = () => {
     if (selectedOption === null) {
       return; // Do not check if no option is selected
     }
 
-    if (selectedOption === quiz[currentQuestionIndex].correctOption) {
+    if (selectedOption === topData.quiz[currentQuestionIndex].correctAns) {
       setScore(score + 1);
       setAnswerCorrect(true);
+      console.log(topData.quiz[currentQuestionIndex].correctAns);
     } else {
       setAnswerCorrect(false);
     }
@@ -312,8 +338,8 @@ const Top = () => {
               <p className='text-center mt-5'>Phasellus sed quam eu eros faucibus cursus. Quisque mauris urna, imperdiet id leo quis, luctus auctor nisi. </p>
 
               <div className='grid grid-cols-4 gap-6 mt-10 justify-items-center max-xl:grid-cols-2 max-sm:grid-cols-1'>
-                {obj.map((item)=>{
-                  return <TopSec1Card head={item.head} para={item.para} image={item.image}/>
+                {topData.casestudies.map((item, index)=>{
+                  return <TopSec1Card key={index} types={item.heading} head={item.casestudynumber} para={item.description} image={item.image}/>
                 })}
               </div>
         </section>
@@ -327,8 +353,8 @@ const Top = () => {
             <p className='mt-5'>Phasellus sed quam eu eros faucibus cursus. Quisque mauris urna, imperdiet id leo quis, luctus auctor nisi. </p>
             
             <div className='mt-12 grid grid-cols-1 gap-10'>
-              {obj2.map((item)=>{
-                return <TopSec2Card image={item.image} diary={item.diary} head={item.head} para={item.para}/>
+              {topData.diplomaticdiaries.map((item, index)=>{
+                return <TopSec2Card key={index} image={item.image} diary={item.diarynumber} head={item.header} para={item.description}/>
               })}
 
             </div>
@@ -343,8 +369,8 @@ const Top = () => {
           <p className='text-center mt-5'>Phasellus sed quam eu eros faucibus cursus. Quisque mauris urna, imperdiet id leo quis, luctus auctor nisi.</p>
 
           <div className='mt-10 grid grid-cols-4 gap-10 justify-center max-xl:grid-cols-2 max-sm:grid-cols-1'>
-            {obj3.map((item)=>{
-              return <TopSec3Card image={item.image} tag={item.tag} head={item.head} para={item.para}/>
+            {topData.blogs.map((item, index)=>{
+              return <TopSec3Card key={index} image={item.image} tag={item.tag} head={item.header} para={item.description}/>
             })}
 
           </div>
@@ -356,21 +382,18 @@ const Top = () => {
 
         <section className='pb-20 p-10'>
           <h2 className='text-4xl font-semibold text-center'>Corporate Power Play Quiz</h2>
-          {currentQuestionIndex < quiz.length ? (
+          {currentQuestionIndex < topData.quiz.length ? (
             <>
               <h3 className='text-3xl text-center mt-16'>Question {quiz[currentQuestionIndex].questionNo}:</h3>
-              <h2 className='text-4xl font-semibold text-center mt-4'>{quiz[currentQuestionIndex].question}</h2>
+              <h2 className='text-4xl font-semibold text-center mt-4'>{topData.quiz[currentQuestionIndex].question}</h2>
 
               <div className='flex flex-col gap-6 justify-center mt-10'>
-                {quiz[currentQuestionIndex].options.map((option, index) => (
-                  <QuizInput
-                    key={index}
-                    option={option}
-                    selectedOption={selectedOption}
-                    onOptionChange={handleOptionChange}
-                    disabled={answerChecked}
-                  />
-                ))}
+                
+                  <QuizInput optionNum='Option A:' option={topData.quiz[currentQuestionIndex].option1} selectedOption={selectedOption} onOptionChange={handleOptionChange} disabled={answerChecked}/>
+                  <QuizInput optionNum='Option B:' option={topData.quiz[currentQuestionIndex].option2} selectedOption={selectedOption} onOptionChange={handleOptionChange} disabled={answerChecked}/>
+                  <QuizInput optionNum='Option C:' option={topData.quiz[currentQuestionIndex].option3} selectedOption={selectedOption} onOptionChange={handleOptionChange} disabled={answerChecked}/>
+                  <QuizInput optionNum='Option D:' option={topData.quiz[currentQuestionIndex].option4} selectedOption={selectedOption} onOptionChange={handleOptionChange} disabled={answerChecked}/>
+           
               </div>
               <div className='flex justify-center mt-10 gap-5'>
                 <button

@@ -84,6 +84,11 @@ export default defineType({
         type: 'string',
         title: 'Section2 Title',
       }),
+      defineField({
+        name: 'sec2date',
+        type: 'datetime',
+        title: 'Section2 Date',
+      }),
     defineField({
         name: 'sec2heading',
         type: 'string',
@@ -115,6 +120,11 @@ export default defineType({
               name: 'sec3title',
               type: 'string',
               title: 'Section3 Title',
+            },
+            {
+              name: 'sec3date',
+              type: 'datetime',
+              title: 'Section3 Date',
             },
             {
               name: 'sec3heading',
@@ -171,10 +181,10 @@ export default defineType({
         title: 'Section5 Button2',
       }),
    
-    //  Column1
+    //  Column
     defineField({
-        name: 'sec5column1',
-        title: 'Section5 Column1',
+        name: 'sec5column',
+        title: 'Section5 Column',
         type: 'array',
         of: [{
           type: 'image',
@@ -204,137 +214,35 @@ export default defineType({
         }]
       }),
 
-      //  Column2
+      
+      //  row
     defineField({
-        name: 'sec5column2',
-        title: 'Section5 Column2',
+        name: 'sec5row',
+        title: 'Section5 Row',
         type: 'array',
         of: [{
           type: 'image',
-          title: 'Section5 Image2',
+          title: 'Row',
           fields: [
             {
-                name: 'sec5subtitle2',
+                name: 'subtitle',
                 type: 'string',
-                title: 'Section5 Title2',
+                title: 'Title',
             },
             {
-              name: 'sec5title2',
+              name: 'title',
               type: 'string',
-              title: 'Section5 SubTitle2',
+              title: 'SubTitle',
             },
             {
-              name: 'sec5heading2',
-              type: 'string',
-              title: 'Section5 Heading2',
+              name: 'date',
+              type: 'datetime',
+              title: 'Date',
             },
-            {
-                name: 'sec5paragraph2',
-                type: 'string',
-                title: 'Section5 Paragraph2',
-              }
           ]
         }]
       }),
 
-      //  row1
-    defineField({
-        name: 'sec5row1',
-        title: 'Section5 Row1',
-        type: 'array',
-        of: [{
-          type: 'image',
-          title: 'Section5 Image2',
-          fields: [
-            {
-                name: 'sec5subtitle3',
-                type: 'string',
-                title: 'Section5 Title3',
-            },
-            {
-              name: 'sec5title3',
-              type: 'string',
-              title: 'Section5 SubTitle3',
-            },
-            {
-              name: 'sec5heading3',
-              type: 'string',
-              title: 'Section5 Heading3',
-            },
-            {
-                name: 'sec5paragraph3',
-                type: 'string',
-                title: 'Section5 Paragraph3',
-              }
-          ]
-        }]
-      }),
-
-            //  row2
-    defineField({
-        name: 'sec5row2',
-        title: 'Section5 Row2',
-        type: 'array',
-        of: [{
-          type: 'image',
-          title: 'Section5 Image2',
-          fields: [
-            {
-                name: 'sec5subtitle4',
-                type: 'string',
-                title: 'Section5 Title4',
-            },
-            {
-              name: 'sec5title4',
-              type: 'string',
-              title: 'Section5 SubTitle4',
-            },
-            {
-              name: 'sec5heading4',
-              type: 'string',
-              title: 'Section5 Heading4',
-            },
-            {
-                name: 'sec5paragraph4',
-                type: 'string',
-                title: 'Section5 Paragraph4',
-              }
-          ]
-        }]
-      }),
-
-      //  row3
-      defineField({
-        name: 'sec5row3',
-        title: 'Section5 Row3',
-        type: 'array',
-        of: [{
-          type: 'image',
-          title: 'Section5 Image2',
-          fields: [
-            {
-                name: 'sec5subtitle5',
-                type: 'string',
-                title: 'Section5 Title5',
-            },
-            {
-              name: 'sec5title5',
-              type: 'string',
-              title: 'Section5 SubTitle5',
-            },
-            {
-              name: 'sec5heading5',
-              type: 'string',
-              title: 'Section5 Heading5',
-            },
-            {
-                name: 'sec5paragraph5',
-                type: 'string',
-                title: 'Section5 Paragraph5',
-              }
-          ]
-        }]
-      }),
 
     // SingersSection
     defineField({
@@ -375,9 +283,9 @@ export default defineType({
               title: 'Section7 Title',
             },
             {
-              name: 'sec7subtitle',
-              type: 'string',
-              title: 'Section7 SubTitle',
+              name: 'sec7date',
+              type: 'datetime',
+              title: 'Section7 Date',
             },
             {
                 name: 'sec7paragraph',

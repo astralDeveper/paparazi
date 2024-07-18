@@ -1,102 +1,100 @@
-import React, { useState } from 'react';
-import img from '../assets/logo (2).png';
+import React, { useEffect, useRef, useState } from 'react';
+import img from '../assets/paparazzi-logo.png';
+import { NavLink } from 'react-router-dom';
+import { RiCloseLine, RiMenu3Fill } from '@remixicon/react';
 
 const Navigation = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      ref.current.classList.remove('max-md:translate-x-full');
+    } else {
+      ref.current.classList.add('max-md:translate-x-full');
+    }
+
+    // Add event listener for clicks
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      // Clean up the event listener
+      document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, [isOpen]);
 
-    return (
-        <header className="sm:flex sm:justify-between sm:items-center sm:px-20 sm:py-3" style={{ background: '#363636' }}>
-            {/* Logo */}
-            <div className="max-w-screen-2xl flex items-center justify-between px-4 py-3 sm:w-[70%] sm:p-0">
-                <div className="flex items-center">
-                    <img className="h-16" src={img} alt="Logo" />
-                </div>
-                <div className="sm:hidden">
-                    <button
-                        onClick={toggleMenu}
-                        type="button"
-                        className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
-                    >
-                        <svg
-                            className="h-6 w-6 fill-current"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            {isOpen ? (
-                                <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            ) : (
-                                <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            )}
-                        </svg>
-                    </button>
-                </div>
+  return (
+    <header className="bg-[#363636]">
+      <div className="mx-auto max-w-screen-2xl w-full p-4 flex justify-between items-center">
+        <div className="flex items-center shrink-0">
+          <img className="h-16" src={img} alt="Logo" />
+        </div>
+
+        {/* Links */}
+        <div ref={ref} className='static max-md:fixed max-md:top-0 max-md:right-0 max-md:h-screen bg-[#363636] max-md:w-[60vw] z-50 max-md:translate-x-full transition-transform'>
+          <ul className='flex gap-4 items-center justify-start max-md:pt-28 max-md:flex-col max-md:h-full relative text-base max-md:text-lg'>
+            <li><NavLink onClick={toggleMenu} to="/" className="[&.active]:text-yellow-500  [&.active]:border-b-2 [&.active]:border-yellow-500" >Home</NavLink></li>
+            <li><NavLink onClick={toggleMenu} to="/about" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >About</NavLink></li>
+            <li><NavLink onClick={toggleMenu} to="/services" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >Services</NavLink></li>
+            <li><NavLink onClick={toggleMenu} to="/career" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >Career</NavLink></li>
+            <li><NavLink onClick={toggleMenu} to="/case-studies" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >Case Studies</NavLink></li>
+
+            <button className='hidden max-md:flex absolute top-4 right-4 ' onClick={() => setIsOpen(false)}>
+              <RiCloseLine />
+            </button>
+
+            <div className="flex gap-6 w-44 lg:hidden md:hidden text-lg flex-col mt-10">
+              <button
+                className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-md font-semibold text-gray-900"
+              >
+                Login
+              </button>
+              <button
+                className="border-yellow-500 hover:bg-yellow-500 px-4 py-2 border rounded-md font-semibold text-yellow-500 hover:text-gray-900"
+              >
+                Sign Up
+              </button>
             </div>
 
-            {/* Navbar Links */}
-            <nav className={`sm:flex ${isOpen ? 'block' : 'hidden'} px-2 pt-2 pb-4 sm:w-full sm:justify-between  sm:p-0 sm:flex mg:justify-end  sm:items-center`}>
-                <div className="px-2 pt-2 pb-4  sm:flex sm:items-center  ">
-                    <a
-                        href="/"
-                        className="block px-2 py-1 text-white font-semibold  text-golden border-b-2" style={{ borderColor: '#D2940A' }}
-                    >
-                        Home
-                    </a>
-                    <a
-                        href="/"
-                        className="mt-1 block px-2 py-1 text-white font-semibold rounded  sm:mt-0 sm:ml-2"
-                    >
-                        About
-                    </a>
-                    <a
-                        href="/"
-                        className="mt-1 block px-2 py-1 text-white font-semibold rounded  sm:mt-0 sm:ml-2"
-                    >
-                        Services
-                    </a>
-                    <a
-                        href="/"
-                        className="mt-1 block px-2 py-1 text-white font-semibold rounded  sm:mt-0 sm:ml-2"
-                    >
-                        Careers
-                    </a>
-                </div>
+          </ul>
+        </div>
 
-                {/* Buttons */}
-                <div className="px-4 py-3 sm:flex sm:items-center">
-                    <button
-                        className="bg-yellow-500 text-gray-900 px-4 py-2 rounded-md hover:bg-yellow-600 font-semibold"
-                    >
-                        Login
-                    </button>
-                    <button
-                        className="ml-4 border border-yellow-500 text-yellow-500 px-4 py-2 rounded-md hover:bg-yellow-500 hover:text-gray-900 font-semibold"
-                    >
-                        Sign Up
-                    </button>
-                </div>
-            </nav>
-        </header>
-    );
+        <div className="hidden max-md:flex justify-center items-center">
+          <button
+            onClick={toggleMenu}
+            type="button"
+            className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
+          >
+            <RiMenu3Fill />
+          </button>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex gap-2 max-md:hidden">
+          <button
+            className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-md font-semibold text-gray-900"
+          >
+            Login
+          </button>
+          <button
+            className="border-yellow-500 hover:bg-yellow-500 px-4 py-2 border rounded-md font-semibold text-yellow-500 hover:text-gray-900"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default Navigation;

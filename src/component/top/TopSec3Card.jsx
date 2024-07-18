@@ -1,11 +1,12 @@
 import React from 'react'
+import { urlFor } from '../../sanity/client'
 
 const TopSec3Card = (props) => {
   return (
     <>
         <div className='bg-white'>
             <div className='h-[250px] w-full'>
-                <img src={props.image} alt="card" className='w-full h-full object-cover grayscale' />
+                <img src={urlFor(props.image).url()} alt="card" className='w-full h-full object-cover grayscale' />
             </div>
 
             <div className='p-4 pb-8'>

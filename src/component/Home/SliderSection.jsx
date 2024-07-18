@@ -1,24 +1,9 @@
-
-
-
-
 import React, { useRef } from 'react';
-import slider from '../../assets/slider.png'
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { urlFor } from '../../sanity/client';
 
-const SliderSection = () => {
-    const cardsData = [
-        { id: 1, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: slider },
-        { id: 2, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/201/200' },
-        { id: 3, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/200/201' },
-        { id: 4, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/201/201' },
-        { id: 5, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/202/200' },
-        { id: 6, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/200/199' },
-        { id: 7, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/199/199' },
-        { id: 8, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/199/200' },
-        { id: 9, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/200/198' },
-        { id: 10, title: 'FIRE RESISTANT CABLES', content: 'Finds applications where electrical  integrity of the cable has to remain intact for at least three hours, so as to activate and maintain crucial.', imgUrl: 'https://unsplash.it/198/199' },
-    ]
+const SliderSection = ({data}) => {
+    
 
     const sliderRef = useRef(null);
 
@@ -31,22 +16,21 @@ const SliderSection = () => {
     };
 
     return (
-        <div className='relative'>
+        <div className='relative max-w-screen-2xl mx-auto'>
        
             <div ref={sliderRef} className="cards-container flex rounded-md pb-40 pl-20">
 
-                {cardsData.map((card, index) => (
-                    <div key={index} className="card border relative  md:w-1/3 sm:mb-0 mb-6 overflow-hidden">
-                      
-                        <img alt="content" className="relative w-full h-full object-center" src={card.imgUrl} />
-              
-                        <div className='absolute z-10 top-40 p-2 text-center w-60 text-white'>
-                            <h2 className=" font-medium">{card.title}</h2>
-                            <p className="text-sm">{card.content}</p>
+                {data.sec10card.map((item, index) => (
+                    <div  className="card h-96 border relative max-w-72 sm:mb-0 mb-6 overflow-hidden">
+                        <img alt="content" className="grayscale relative w-full h-full object-center" src={urlFor(item).url()} />
+                        <div className="absolute inset-0 w-full h-full bg-black/40" />
+                        <div className='absolute z-10 top-1/2 -translate-y-1/2 p-2 left-1/2 -translate-x-1/2 text-center w-60 text-white'>
+                            <h2 className=" font-medium">{item.sec10title}</h2>
+                            <p className="text-sm">{item.sec10subtitle}</p>
                         </div>
 
-                        <div className="rounded-r-full bg-white absolute top-72 -rotate-45 px-6 py-6">
-                            <p className='font-bold text-2xl'>{card.id}</p>
+                        <div className="rounded-full bg-white absolute -bottom-4 -left-4 size-20 flex items-center justify-center">
+                            <p className='font-bold text-xl'>{index+1}</p>
                         </div>
                     </div>
                 ))}

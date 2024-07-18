@@ -1,11 +1,12 @@
 import React from 'react'
+import { urlFor } from '../../sanity/client'
 
 const TopSec2Card = (props) => {
   return (
     <>
       <div className='bg-white p-6 rounded-xl flex gap-12 items-center max-xl:gap-8 max-lg:flex-wrap'>
           <div className='h-[300px] w-[380px] max-lg:w-full'>
-             <img src={props.image} className='rounded-xl grayscale min-w-72 max-sm:min-w-full w-full h-full object-cover' alt="image1" />
+             <img src={urlFor(props.image).url()} className='rounded-xl grayscale min-w-72 max-sm:min-w-full w-full h-full object-cover' alt="image1" />
           </div>
 
           <div className='max-w-screen-lg'>
