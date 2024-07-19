@@ -10,21 +10,20 @@ const Banner = ({data}) => {
 
     return (
         <div>
-            <section className="banner-parent body-font">
+            <section className="banner-parent overflow-hidden">
                 <div className=" mx-auto px-3 md:py-16 container ">
                     <div className="flex flex-col md:mb-14 w-full text-center">
-                        <h1 className="mb-4 font-medium title-font" style={{ fontSize: 'calc(2px + 2vw + 16px)' }}>
+                        <h1 className="mb-4 font-medium text-5xl max-md:text-3xl max-sm:text-2xl">
                         {data.header}
                         </h1>
                     </div>
 
                     <div className="flex flex-wrap justify-center -mx-4 text-center">
-                     
                             <div className="p-4 w-full sm:w-1/2 md:w-1/6">
                                 <div className="bg-white w-22 h-44 rounded-lg text-gray-800  pt-7">
                                   
                                     <img src={Icon1} className="mx-auto w-20" />
-                                    <h2 className="font-medium title-font sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[0]}</h2>
+                                    <h2 className="font-medium sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[0]}</h2>
                                 </div>
                             </div>
 
@@ -32,7 +31,7 @@ const Banner = ({data}) => {
                                 <div className="bg-white w-22 h-44 rounded-lg text-gray-800  pt-7">
                                   
                                     <img src={Icon2} className="mx-auto w-20" />
-                                    <h2 className="font-medium title-font sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[1]}</h2>
+                                    <h2 className="font-medium sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[1]}</h2>
                                 </div>
                             </div>
 
@@ -40,7 +39,7 @@ const Banner = ({data}) => {
                                 <div className="bg-white w-22 h-44 rounded-lg text-gray-800  pt-7">
                                   
                                     <img src={Icon3} className="mx-auto w-20" />
-                                    <h2 className="font-medium title-font sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[2]}</h2>
+                                    <h2 className="font-medium sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[2]}</h2>
                                 </div>
                             </div>
 
@@ -48,7 +47,7 @@ const Banner = ({data}) => {
                                 <div className="bg-white w-22 h-44 rounded-lg text-gray-800  pt-7">
                                   
                                     <img src={Icon4} className="mx-auto w-20" />
-                                    <h2 className="font-medium title-font sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[3]}</h2>
+                                    <h2 className="font-medium sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[3]}</h2>
                                 </div>
                             </div>
 
@@ -56,7 +55,7 @@ const Banner = ({data}) => {
                                 <div className="bg-white w-22 h-44 rounded-lg text-gray-800  pt-7">
                                   
                                     <img src={Icon5} className="mx-auto w-20" />
-                                    <h2 className="font-medium title-font sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[4]}</h2>
+                                    <h2 className="font-medium sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[4]}</h2>
                                 </div>
                             </div>
 
@@ -64,7 +63,7 @@ const Banner = ({data}) => {
                                 <div className="bg-white w-22 h-44 rounded-lg text-gray-800  pt-7">
                                   
                                     <img src={Icon6} className="mx-auto w-20" />
-                                    <h2 className="font-medium title-font sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[5]}</h2>
+                                    <h2 className="font-medium sm:text-1xl md:text-lg lg:text-lg xl:text-1xl" >{data.headercards[5]}</h2>
                                 </div>
                             </div>
                

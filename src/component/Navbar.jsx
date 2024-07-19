@@ -41,7 +41,7 @@ const Navigation = () => {
         </div>
 
         {/* Links */}
-        <div ref={ref} className='static max-md:fixed max-md:top-0 max-md:right-0 max-md:h-screen bg-[#363636] max-md:w-[60vw] z-50 max-md:translate-x-full transition-transform'>
+        <div ref={ref} className='static max-md:fixed max-md:top-0 max-md:right-0 max-md:h-screen bg-[#363636] max-md:w-[60vw] max-md:min-w-80 max-md:shadow-2xl z-50 max-md:translate-x-full transition-transform'>
           <ul className='flex gap-4 items-center justify-start max-md:pt-28 max-md:flex-col max-md:h-full relative text-base max-md:text-lg'>
             <li><NavLink onClick={toggleMenu} to="/" className="[&.active]:text-yellow-500  [&.active]:border-b-2 [&.active]:border-yellow-500" >Home</NavLink></li>
             <li><NavLink onClick={toggleMenu} to="/about" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >About</NavLink></li>

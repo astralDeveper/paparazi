@@ -11,6 +11,7 @@
 body{
   background-color: #151515;
   color: #fff;
+  overflow-x: hidden;
 }
 .bg-golden{
   background-color: #D2940A;
@@ -69,7 +70,7 @@ body{
 
 
 /* slider */
-.cards-container {
+/* .cards-container {
   display: flex;
   border-radius: 6px;
   color: #333;
@@ -79,7 +80,7 @@ body{
   &::-webkit-scrollbar {
     display: none;
   }
-}
+} */
 
 .card {
   flex: 1 0 250px;
@@ -106,10 +107,10 @@ body{
     width: 100%
   }
   
-  .cards-container {
+  /* .cards-container {
     padding: .5rem;
   }
-  
+   */
   .card {
     margin: .5rem;
   }

@@ -12,8 +12,8 @@ import {
 const Footer = () => {
   return (
     <div>
-      <div className="bg-[#252525] w-full h-auto p-10">
-        <div className=" w-[80%] mx-auto">
+      <div className="bg-[#252525] w-full h-auto p-10 max-sm:p-4">
+        <div className="mx-auto">
           <div className="grid grid-cols-2 justify-between items-center max-sm:grid-cols-1 flex-wrap gap-4">
             <div className="flex items-center gap-4 max-lg:flex-col">
               <div>
@@ -45,9 +45,9 @@ const Footer = () => {
             <hr className="w-full border-[#364067]" />
           </div>
 
-          <div className="grid grid-cols-[1fr_1fr_1fr_1fr_auto] max-lg:grid-cols-2 max-lg:justify-items-center *:max-w-96 gap-10 mt-16 mb-[5%]">
+          <div className="grid grid-cols-[1fr_1fr_1fr_1fr_auto] max-lg:grid-cols-2 *:max-w-96 gap-10 max-sm:gap-6 mt-16 mb-6">
             <div>
-              <h2 className="text-white text-[22px] font-[700]">
+              <h2 className="text-white text-xl font-[700]">
                 Company Info
               </h2>
               <ul className="flex flex-col gap-4 text-[#BDBDBD] text-[19px] font-[600] mt-[15%] ">
@@ -95,15 +95,15 @@ const Footer = () => {
                 </h2>
               </div>
               <div className="flex items-center mt-[8%]">
-                <div className="basis-3/5">
+                <div className="basis-3/5 max-w-96 flex-1">
                   <input
                     type="text"
                     placeholder="Enter your Email"
-                    className="p-2 h-[50px] "
+                    className="p-2 h-[50px] w-full"
                   />
                 </div>
                 <div>
-                  <button className="bg-[#FFA62B] h-[50px] p-2 text-white borrder-white">
+                  <button className="bg-[#FFA62B] h-[50px] p-2 text-white border-white">
                     subscribe
                   </button>
                 </div>
