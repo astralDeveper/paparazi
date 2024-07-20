@@ -1,19 +1,20 @@
 import React from "react";
 import img from "../assets/image 2.png";
 import {
-  RiFacebookBoxFill,
-  RiInstagramFill,
   RiInstagramLine,
-  RiLinkedinFill,
-  RiTwitterFill,
-  RiYoutubeFill,
+  RiLinkedinBoxFill,
+  RiTiktokFill,
 } from "@remixicon/react";
+
+
+
+
 
 const Footer = () => {
   return (
     <div>
       <div className="bg-[#252525] w-full h-auto p-10 max-sm:p-4">
-        <div className="mx-auto">
+        <div className=" max-w-screen-2xl mx-auto">
           <div className="grid grid-cols-2 justify-between items-center max-sm:grid-cols-1 flex-wrap gap-4">
             <div className="flex items-center gap-4 max-lg:flex-col">
               <div>
@@ -25,19 +26,19 @@ const Footer = () => {
             </div>
             <ul className="flex items-center gap-4 h-[23px] justify-end max-sm:justify-center">
               <li className="text-white">
-                <RiFacebookBoxFill />
+                <a href="https://www.linkedin.com/company/paparazzihouse/" target="_blank">
+                  <RiLinkedinBoxFill />
+                </a>
               </li>
               <li className="text-white">
-                {" "}
-                <RiYoutubeFill />
+                <a href="https://www.instagram.com/paparazzihouse?igsh=OHVoNXVtc21xM21p&utm_source=qr" target="_blank">
+                  <RiInstagramLine />
+                </a>
               </li>
               <li className="text-white">
-                {" "}
-                <RiInstagramLine />
-              </li>
-              <li className="text-white">
-                {" "}
-                <RiTwitterFill />
+                <a href="#" target="_blank">
+                  <RiTiktokFill />
+                </a>
               </li>
             </ul>
           </div>

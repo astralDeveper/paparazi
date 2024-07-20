@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import img from '../assets/paparazzi-logo.png';
 import { NavLink } from 'react-router-dom';
 import { RiCloseLine, RiMenu3Fill } from '@remixicon/react';
-
+import Whatsapp from "../assets/whatsapp.png";
+import Group from "../assets/group.png"
+import Recycle from "../assets/recycle.png"
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
@@ -53,17 +55,22 @@ const Navigation = () => {
               <RiCloseLine />
             </button>
 
-            <div className="flex gap-6 w-44 lg:hidden md:hidden text-lg flex-col mt-10">
-              <button
-                className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-md font-semibold text-gray-900"
-              >
-                Login
-              </button>
-              <button
-                className="border-yellow-500 hover:bg-yellow-500 px-4 py-2 border rounded-md font-semibold text-yellow-500 hover:text-gray-900"
-              >
-                Sign Up
-              </button>
+            <div className="flex gap-4 w-44 lg:hidden md:hidden  text-lg  mt-10">
+              <a href="#">
+                <span>
+                  <img src={Whatsapp} alt="Whatsapp" />
+                </span>
+              </a>
+              <a href="#">
+                <span>
+                  <img src={Group} alt="Group" />
+                </span>
+              </a>
+              <a href="#">
+                <span>
+                  <img src={Recycle} alt="Recycle" />
+                </span>
+              </a>
             </div>
 
           </ul>
@@ -80,17 +87,22 @@ const Navigation = () => {
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-2 max-md:hidden">
-          <button
-            className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-md font-semibold text-gray-900"
-          >
-            Login
-          </button>
-          <button
-            className="border-yellow-500 hover:bg-yellow-500 px-4 py-2 border rounded-md font-semibold text-yellow-500 hover:text-gray-900"
-          >
-            Sign Up
-          </button>
+        <div className="flex gap-3 max-md:hidden">
+          <a href="#">
+            <span>
+              <img src={Whatsapp} alt="Whatsapp" width={45} />
+            </span>
+          </a>
+          <a href="#">
+            <span>
+              <img src={Group} alt="Group" width={45} />
+            </span>
+          </a>
+          <a href="#">
+            <span>
+              <img src={Recycle} alt="Recycle" width={46} />
+            </span>
+          </a>
         </div>
       </div>
     </header>
