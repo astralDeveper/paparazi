@@ -28,6 +28,16 @@ export default defineType({
               type: 'url',
               title: 'Linkedin Link',
             },
+            {
+              name: 'whatsappLink',
+              type: 'url',
+              title: 'Whatsapp Link',
+            },
+            {
+              name: 'whatsappCommunityLink',
+              type: 'url',
+              title: 'Whatsapp community Link',
+            },
           ]
         }]
       }),
@@ -117,13 +127,13 @@ export default defineType({
     }),
     defineField({
       name: 'btnLine',
-      title: 'Button Line ',
+      title: 'Button Line',
       type: 'string',
 
     }),
     defineField({
       name: 'copyRight',
-      title: 'Copy Right',
+      title: 'Footer bottom line',
       type: 'string',
     })
   ]

@@ -6,6 +6,8 @@ import {
   RiLinkedinFill,
   RiTiktokFill,
   RiTwitterFill,
+  RiWhatsappFill,
+  RiWhatsappLine,
   RiYoutubeFill,
 } from "@remixicon/react";
 import Link from "next/link";
@@ -44,6 +46,14 @@ export default async function Footer() {
 
               <li className="text-white">
                   <a href={footerData ? footerData.socialMedia[0].tiktokLink : '/'} target="_blank"><RiTiktokFill /></a>
+              </li>
+
+              <li className="text-white">
+                  <a href={footerData ? footerData.socialMedia[0].whatsappLink : '/'} target="_blank"><RiWhatsappFill /></a>
+              </li>
+
+              <li className="text-white">
+                  <a href={footerData ? footerData.socialMedia[0].whatsappCommunityLink : '/'} target="_blank"><RiWhatsappLine /></a>
               </li>
             </ul>
           </div>
@@ -98,7 +108,7 @@ export default async function Footer() {
                   />
                 </div>
                 <div>
-                  <button className="bg-[#FFA62B] h-[50px] p-2 text-white border-white">
+                  <button className="bg-golden h-[50px] p-2 text-white border-white">
                     subscribe
                   </button>
                 </div>
