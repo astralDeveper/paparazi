@@ -5,11 +5,14 @@ import { RiCloseLine, RiMenu3Fill } from '@remixicon/react';
 import Link from 'next/link';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/firebaseConfig';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState('');
   const ref = useRef(null);
+
+  const pathname = usePathname()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -74,11 +77,11 @@ export default function Navbar() {
         {/* Links */}
         <div ref={ref} className='static max-md:fixed max-md:top-0 max-md:right-0 max-md:h-screen bg-[#363636] max-md:w-[60vw] max-md:min-w-80 max-md:shadow-2xl z-50 max-md:translate-x-full transition-transform'>
           <ul className='flex gap-4 items-center justify-start max-md:pt-28 max-md:flex-col max-md:h-full relative text-base max-md:text-lg'>
-            <li><Link onClick={toggleMenu} href="/" className="[&.active]:text-yellow-500  [&.active]:border-b-2 [&.active]:border-yellow-500" >Home</Link></li>
-            <li><Link onClick={toggleMenu} href="/about" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >About</Link></li>
-            <li><Link onClick={toggleMenu} href="/services" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >Services</Link></li>
-            <li><Link onClick={toggleMenu} href="/career" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >Career</Link></li>
-            <li><Link onClick={toggleMenu} href="/case-studies" className="[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500" >Case Studies</Link></li>
+            <li><Link onClick={toggleMenu} href="/" className={`[&.active]:text-yellow-500  [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/" ? 'active': ''}`} >Home</Link></li>
+            <li><Link onClick={toggleMenu} href="/about" className={`[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/about" ? 'active': ''}`} >About</Link></li>
+            <li><Link onClick={toggleMenu} href="/services" className={`[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/services" ? 'active': ''}`} >Services</Link></li>
+            <li><Link onClick={toggleMenu} href="/career" className={`[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/career" ? 'active': ''}`} >Career</Link></li>
+            <li><Link onClick={toggleMenu} href="/case-studies" className={`[&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/case-studies" ? 'active': ''}`} >Case Studies</Link></li>
 
             <button className='hidden max-md:flex absolute top-4 right-4 ' onClick={() => setIsOpen(false)}>
               <RiCloseLine />
