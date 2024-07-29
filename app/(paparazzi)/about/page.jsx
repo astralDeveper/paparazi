@@ -10,14 +10,15 @@ import * as Tabs from "@radix-ui/react-tabs";
 import { PortableText } from '@portabletext/react'
 import { urlForImage } from "@/sanity/lib/utils";
 import { client } from "@/sanity/lib/client";
-
-export const dynamic = "force-dynamic";
+import { groq } from "next-sanity";
 
 export default async function About() {
   let aboutData = null;
   
   try {
-    const about = await client.fetch(`*[_type == 'About'][0]{...}`);
+    const about = await client.fetch(groq`*[_type == 'About'][0]{...}`, {}, {
+      next: {tags: ['About']}
+    });
     aboutData = about
   } catch (error) {
     console.error("Error fetching data:", error);

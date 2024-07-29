@@ -1,16 +1,15 @@
-
 import { client } from '@/sanity/lib/client'
 import { urlForImage } from '@/sanity/lib/utils';
-
-export const dynamic = "force-dynamic";
+import { groq } from 'next-sanity';
 
 export default async function PowerPlayBlogsPage() {
   let data = null;
 
   try {
-    const blogsdata = await client.fetch(`*[_type == 'powerplayBlogs']{...}`);
+    const blogsdata = await client.fetch(groq`*[_type == 'powerplayBlogs']{...}`, {}, {
+      next: { tags: ['powerplayBlogs']}
+    });
     data = blogsdata[0]
-    console.log(data);
   } catch (error) {
     console.error("Error fetching data:", error);
   }

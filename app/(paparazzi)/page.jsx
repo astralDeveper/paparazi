@@ -10,13 +10,13 @@ import Solutions from '@/app/_components/home/Solutions'
 import SliderSection from '@/app/_components/home/SliderSection'
 import { client } from '@/sanity/lib/client'
 
-export const dynamic = "force-dynamic";
-
 export default async function HomePage() {
   let data = null;
 
   try {
-    const homepageData = await client.fetch(`*[_type == 'Home'][0]{...}`);
+    const homepageData = await client.fetch(`*[_type == 'Home'][0]{...}`, {}, {
+      next: { tags: ['Home'] }
+    });
     data = homepageData;
   } catch (error) {
     console.error("Error fetching data:", error);

@@ -1,13 +1,14 @@
 import { client } from '@/sanity/lib/client'
 import { urlForImage } from '@/sanity/lib/utils';
-
-export const dynamic = "force-dynamic";
+import { groq } from 'next-sanity';
 
 export default async function DiplomaticDiariesPage() {
   let data = null;
 
   try {
-    data = await client.fetch(`*[_type == 'diplomaticDiaries'][0]{...}`);
+    data = await client.fetch(groq`*[_type == 'diplomaticDiaries'][0]{...}`, {}, {
+      next: { tags: ['diplomaticDiaries'] }
+    });
   } catch (error) {
     console.error("Error fetching data:", error);
   }

@@ -1,13 +1,15 @@
+import { RiArrowRightLine, RiArticleLine, RiBriefcaseLine, RiMapPin2Line } from '@remixicon/react';
+import { groq } from 'next-sanity';
 import { urlForImage } from '@/sanity/lib/utils'
 import { client } from '@/sanity/lib/client';
-
-export const dynamic = "force-dynamic";
 
 export default async function Career() {
     let careerData = null;
 
     try {
-      const career = await client.fetch(`*[_type == 'Careers'][0]{...}`);
+      const career = await client.fetch(groq`*[_type == 'Careers'][0]{...}`, {}, {
+        next: { tags: ['Careers'] }
+      });
       careerData = career
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -134,8 +136,6 @@ function Section3({careersData}) {
     </section>
   );
 }
-
-import { RiArrowRightLine, RiArticleLine, RiBriefcaseLine, RiMapPin2Line } from '@remixicon/react';
 
 function Section4({ careersData }) {
   return (
