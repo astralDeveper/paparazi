@@ -1,9 +1,12 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'Services',
   title: 'Services',
   type: 'document',
+  preview: {
+    prepare: () => ({ title: "Services page" })
+  },
   fields: [
     defineField({
       name: 'title',

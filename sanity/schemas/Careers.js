@@ -4,6 +4,9 @@ export default defineType({
   name: 'Careers',
   title: 'Careers',
   type: 'document',
+  preview: {
+    prepare: () => ({ title: "Careers page" })
+  },
   fields: [
     defineField({
       name: 'title1',

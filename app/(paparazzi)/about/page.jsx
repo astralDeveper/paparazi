@@ -11,6 +11,8 @@ import { PortableText } from '@portabletext/react'
 import { urlForImage } from "@/sanity/lib/utils";
 import { client } from "@/sanity/lib/client";
 
+export const dynamic = "force-dynamic";
+
 export default async function About() {
   let aboutData = null;
   

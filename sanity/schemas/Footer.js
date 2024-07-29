@@ -4,43 +4,10 @@ export default defineType({
   name: "Footer",
   title: "Footer",
   type: "document",
+  preview: {
+    prepare: () => ({ title: "Footer" })
+  },
   fields: [
-    defineField({
-        name: 'socialMedia',
-        title: 'Social Media Links',
-        type: 'array',
-        of: [{
-          type: 'object',
-          title: 'Social Media Links',
-          fields: [
-            {
-              name: 'instagramLink',
-              type: 'url',
-              title: 'Instagram Link',
-            },
-            {
-              name: 'tiktokLink',
-              type: 'url',
-              title: 'Tiktok Link',
-            },
-            {
-              name: 'linkedinLink',
-              type: 'url',
-              title: 'Linkedin Link',
-            },
-            {
-              name: 'whatsappLink',
-              type: 'url',
-              title: 'Whatsapp Link',
-            },
-            {
-              name: 'whatsappCommunityLink',
-              type: 'url',
-              title: 'Whatsapp community Link',
-            },
-          ]
-        }]
-      }),
     defineField({
       name: 'comapanyInfo',
       title: 'Comopany info',

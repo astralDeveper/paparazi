@@ -1,7 +1,6 @@
 import Banner from '@/app/_components/home/Banner'
 import Blogs from '@/app/_components/home/Blogs'
 import Development from '@/app/_components/home/Development'
-import DevCards from '@/app/_components/home/DevCards'
 import AboutUs from '@/app/_components/home/AboutUs'
 import BussinessSection from '@/app/_components/home/BussinessSection'
 import SingersSection from '@/app/_components/home/SingersSection'
@@ -10,6 +9,8 @@ import DevCards2 from '@/app/_components/home/DevCards2'
 import Solutions from '@/app/_components/home/Solutions'
 import SliderSection from '@/app/_components/home/SliderSection'
 import { client } from '@/sanity/lib/client'
+
+export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   let data = null;
@@ -28,7 +29,6 @@ export default async function HomePage() {
       <Banner data={data}/>
       <Blogs data={data}/>
       <Development data={data}/>
-      {/* <DevCards data={data}/> */}
       <AboutUs data={data}/>
       <BussinessSection data={data}/>
       <SingersSection data={data}/>

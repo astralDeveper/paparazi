@@ -1,6 +1,8 @@
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/utils";
 
+export const dynamic = "force-dynamic";
+
 export default async function Services() {
   let servicesData = null;
 

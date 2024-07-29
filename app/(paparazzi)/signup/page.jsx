@@ -52,11 +52,12 @@ const Signup = () => {
 
 
   return (
-    <div className="min-h-screen px-5 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="text-center text-3xl font-semibold ">Create a new Account</h2>
-        <div className="mt-8 bg-[#252525] py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}>
+    <div className="min-h-screen px-4 flex flex-col py-16">
+      <img src="/paparazzi-logo.png" alt="Paparazzi House Logo" className="h-36 mx-auto" />
+
+      <h2 className="mt-20 text-center text-3xl max-sm:text-2xl max-sm:font-medium font-semibold">Create a new account</h2>
+      <div className="mt-8 bg-[#252525] shadow p-8 max-md:p-4 rounded-lg max-w-md mx-auto w-full">
+      <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium ">
                 Name
@@ -112,23 +113,23 @@ const Signup = () => {
               </div>
             </div>
 
-            <div className=' pt-6 text-sm '>
+            <div className='pt-2 text-sm text-yellow-500 hover:text-yellow-600 transition-colors'>
               <Link href='/login'><span>Already have an Account?</span></Link>
             </div>
             <div>
               <button
                 type="submit"
-                className=" bg-yellow-500 hover:bg-yellow-600 w-full  text-black font-semibold py-2 px-4 mt- rounded-md "
+                className=" bg-yellow-500 hover:bg-yellow-600 w-full text-black font-semibold py-2 px-4 rounded-md transition-colors"
               >
                 Sign up
               </button>
 
             </div>
           </form>
-        </div>
       </div>
     </div>
   );
 }
 
 export default Signup
+

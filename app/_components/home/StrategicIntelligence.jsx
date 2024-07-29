@@ -10,9 +10,9 @@ const StrategicIntelligence = ({data}) => {
         <span className="inline-block bg-[#65656533] border py-2 px-4 rounded-xl text-sm font-semibold">{data.sec8button}</span>
       </div>
       <h2 className="text-4xl mb-24">{data.sec8title}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
       {data.sec8card.map((item, i) => (
-          <div key={i} className="bg-[#151515] p-6 w-80 h-80 rounded-lg shiny-edges">
+          <div key={i} className="bg-[#151515] p-6 w-80 max-lg:w-full h-80 rounded-lg shiny-edges">
             <div className="flex items-center mb-4">
                 <Image width={48} height={48} src={svg} alt="Icon" className="size-12" />
             </div>

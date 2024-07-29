@@ -1,16 +1,4 @@
 import { client } from "@/sanity/lib/client";
-import {
-  RiFacebookBoxFill,
-  RiInstagramFill,
-  RiInstagramLine,
-  RiLinkedinFill,
-  RiTiktokFill,
-  RiTwitterFill,
-  RiWhatsappFill,
-  RiWhatsappLine,
-  RiYoutubeFill,
-} from "@remixicon/react";
-import Link from "next/link";
 
 export default async function Footer() {
   let footerData;
@@ -28,13 +16,13 @@ export default async function Footer() {
           <div className="grid grid-cols-2 justify-between items-center max-sm:grid-cols-1 flex-wrap gap-4">
             <div className="flex items-center gap-4 max-lg:flex-col">
               <div>
-                <img src="/paprazzi-logo.png" alt="" />
+                <img src="/paparazzi-logo.png" alt="" />
               </div>
               <div>
-                <h1 className="text-[32px] text-white font-[700]">Papparazi</h1>
+                <h1 className="text-3xl text-white font-semibold">Paparazzi</h1>
               </div>
             </div>
-            <ul className="flex items-center gap-4 h-[23px] justify-end max-sm:justify-center">
+            {/* <ul className="flex items-center gap-4 h-[23px] justify-end max-sm:justify-center">
 
               <li className="text-white">
                   <a href={footerData ? footerData.socialMedia[0].instagramLink : '/'} target="_blank"><RiInstagramLine /></a>
@@ -55,7 +43,7 @@ export default async function Footer() {
               <li className="text-white">
                   <a href={footerData ? footerData.socialMedia[0].whatsappCommunityLink : '/'} target="_blank"><RiWhatsappLine /></a>
               </li>
-            </ul>
+            </ul> */}
           </div>
 
           <div className="bg-[#364067] mt-6">
@@ -64,38 +52,38 @@ export default async function Footer() {
 
           <div className="grid grid-cols-[1fr_1fr_1fr_1fr_auto] max-lg:grid-cols-2 *:max-w-96 gap-10 max-sm:gap-6 mt-16 mb-6">
             <div>
-              <h2 className="text-white text-xl font-[700]">
+              <h2 className="text-white text-xl font-semibold">
                 Company Info
               </h2>
-              <ul className="flex flex-col gap-4 text-[#BDBDBD] text-[19px] font-[600] mt-[15%] ">
-                {footerData.comapanyInfo.map((item) =>  <a key={item._key} href={item.route}><li className="cursor-pointer">{item.label}</li></a>)}
+              <ul className="flex flex-col gap-4 text-gray-300 mt-6">
+                {footerData.comapanyInfo.map((item) =>  <a key={item._key} href={item.route} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
               </ul>
             </div>
 
             <div>
-              <h2 className="text-white text-[22px] font-[700] ">Legal</h2>
-              <ul className="flex flex-col gap-4 text-[#BDBDBD] text-[19px] font-[600] mt-[15%]">
-                {footerData.legal.map((item)=> <a key={item._key} href={item.url}><li className="cursor-pointer">{item.label}</li></a>)}
+              <h2 className="text-white text-xl font-semibold ">Legal</h2>
+              <ul className="flex flex-col gap-4 text-gray-300 mt-6">
+                {footerData.legal.map((item)=> <a key={item._key} href={item.url} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
               </ul>
             </div>
 
             <div>
-              <h2 className="text-white text-[22px] font-[700]">Features</h2>
-              <ul className="flex flex-col gap-4 text-[#BDBDBD] text-[19px] font-[600] mt-[15%]">
-                {footerData.features.map((item)=> <a key={item._key} href={item.url}><li className="cursor-pointer">{item.label}</li></a>)}
+              <h2 className="text-white text-xl font-semibold">Features</h2>
+              <ul className="flex flex-col gap-4 text-gray-300 mt-6">
+                {footerData.features.map((item)=> <a key={item._key} href={item.url} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
               </ul>
             </div>
 
             <div className="">
-              <h2 className="text-white text-[22px] font-[700]">Resources</h2>
-              <ul className="flex flex-col gap-4 text-[#BDBDBD] text-[19px] font-[600] mt-[15%]">
-                {footerData.resources.map((item)=> <a key={item._key} href={item.url}><li className="cursor-pointer">{item.label}</li></a>)}
+              <h2 className="text-white text-xl font-semibold">Resources</h2>
+              <ul className="flex flex-col gap-4 text-gray-300 mt-6">
+                {footerData.resources.map((item)=> <a key={item._key} href={item.url} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
               </ul>
             </div>
 
             <div className="max-lg:col-span-2">
               <div>
-                <h2 className="text-white text-[22px] font-bold">
+                <h2 className="text-white text-xl font-bold">
                   Company Info
                 </h2>
               </div>

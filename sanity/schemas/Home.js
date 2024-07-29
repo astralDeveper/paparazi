@@ -4,7 +4,9 @@ export default defineType({
   name: 'Home',
   title: 'Home',
   type: 'document',
-
+  preview: {
+    prepare: () => ({ title: "Home page" })
+  },
   fields: [
     // Banner
     defineField({
@@ -74,68 +76,68 @@ export default defineType({
         type: 'string',
         title: 'Section2 Button',
       }),
-    defineField({
-        name: 'sec2image',
-        type: 'image',
-        title: 'Section2 image',
-      }),
-      defineField({
-        name: 'sec2title',
-        type: 'string',
-        title: 'Section2 Title',
-      }),
-      defineField({
-        name: 'sec2date',
-        type: 'datetime',
-        title: 'Section2 Date',
-      }),
-    defineField({
-        name: 'sec2heading',
-        type: 'string',
-        title: 'Section2 Heading',
-      }),
+    // defineField({
+    //     name: 'sec2image',
+    //     type: 'image',
+    //     title: 'Section2 image',
+    //   }),
+    //   defineField({
+    //     name: 'sec2title',
+    //     type: 'string',
+    //     title: 'Section2 Title',
+    //   }),
+    //   defineField({
+    //     name: 'sec2date',
+    //     type: 'datetime',
+    //     title: 'Section2 Date',
+    //   }),
+    // defineField({
+    //     name: 'sec2heading',
+    //     type: 'string',
+    //     title: 'Section2 Heading',
+    //   }),
 
-      defineField({
-        name: 'sec2subheading',
-        type: 'string',
-        title: 'Section2 SubHeading',
-      }),
-      defineField({
-        name: 'sec2button2',
-        type: 'string',
-        title: 'Section2 Button2',
-      }),
+    //   defineField({
+    //     name: 'sec2subheading',
+    //     type: 'string',
+    //     title: 'Section2 SubHeading',
+    //   }),
+    //   defineField({
+    //     name: 'sec2button2',
+    //     type: 'string',
+    //     title: 'Section2 Button2',
+    //   }),
 
     //   DevCards
 
     defineField({
         name: 'sec3',
-        title: 'Section3',
+        title: 'Section2 Cards',
         type: 'array',
         of: [{
           type: 'image',
-          title: 'Section3 Card',
+          title: 'Section2 Card',
           fields: [
             {
               name: 'sec3title',
               type: 'string',
-              title: 'Section3 Title',
+              title: 'Section2 Title',
             },
             {
               name: 'sec3date',
               type: 'datetime',
-              title: 'Section3 Date',
+              title: 'Section2 Date',
             },
             {
               name: 'sec3heading',
               type: 'string',
-              title: 'Section3 Heading',
+              title: 'Section2 Heading',
             },
             {
-                name: 'sec3paragraph',
-                type: 'string',
-                title: 'Section3 Paragraph',
-              }
+              name: 'sec3paragraph',
+              type: 'string',
+              title: 'Section2 Paragraph',
+            }
           ]
         }]
       }),

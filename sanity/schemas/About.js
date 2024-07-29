@@ -4,6 +4,9 @@ export default defineType({
   name: 'About',
   title: 'About',
   type: 'document',
+  preview: {
+    prepare: () => ({ title: "About page" })
+  },
   fields: [
     defineField({
       name: 'tabs',
