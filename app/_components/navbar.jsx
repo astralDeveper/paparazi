@@ -84,7 +84,6 @@ export default function Navbar() {
       if (user) {
         const uid = user.uid;
         setUser(uid);
-        console.log("User signed in:", user);
       } else {
         // User is signed out
         // ...

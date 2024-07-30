@@ -83,10 +83,11 @@ export default function QuizPage() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        const uid = user.uid;
-        client.fetch(`*[_id == '${uid}'][0]{...}`).then((res) => {
-          setUser({ id: uid, username: res.username, email: res.email });
-        })
+        // const uid = user.uid;
+        // client.fetch(`*[_id == '${uid}'][0]{...}`).then((res) => {
+        //   setUser({ id: uid, username: res.username, email: res.email });
+        // })
+        setUser({ id: user.uid, username: user.displayName, email: user.email });
       } else {
         setUser(null);
       }
