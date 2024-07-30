@@ -227,7 +227,7 @@ export default function Navbar() {
                 <a href={navbarData?.socialMediaLinks.whatsappCommunityLink} target="_blank">
                   <img src={whatsappCommunityIcon.src} className="h-12" alt="whatsapp community icon" />
                 </a>
-                <a href={navbarData?.socialMediaLinks.phone} target="_blank">
+                <a href={`tel:${navbarData?.socialMediaLinks.phone}`} target="_blank">
                   <img src={phoneIcon.src} className="h-10" alt="phone icon" />
                 </a>
               </div>
@@ -254,7 +254,7 @@ export default function Navbar() {
           <a href={navbarData?.socialMediaLinks.whatsappCommunityLink} target="_blank">
             <img src={whatsappCommunityIcon.src} className="h-12" alt="whatsapp community icon" />
           </a>
-          <a href={navbarData?.socialMediaLinks.phone} target="_blank">
+          <a href={`tel:${navbarData?.socialMediaLinks.phone}`} target="_blank">
             <img src={phoneIcon.src} className="h-10" alt="phone icon" />
           </a>
 

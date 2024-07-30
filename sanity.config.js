@@ -40,7 +40,7 @@ export default defineConfig({
       diplomaticDiaries,
       powerplayBlogs,
       quizResult,
-      users,
+      // users,
     ]
   },
   plugins: [

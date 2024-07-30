@@ -97,7 +97,7 @@ export default function JobCards({ careersData }) {
                 <p className="flex gap-4 items-center justify-start">
                   <RiBriefcaseLine className="text-green-600 size-6" />
                   <span>Type:</span>
-                  <span className="font-light">{selectedPosition.type}</span>
+                  <span className="font-light capitalize">{selectedPosition.type}</span>
                 </p>
                 <p className="flex gap-4 items-center justify-start">
                   <RiArticleLine className="text-orange-600 size-6" />

@@ -43,7 +43,7 @@ export default defineType({
         {
           name: 'phone',
           type: 'string',
-          title: 'Phone'
+          title: 'Phone Number'
         }
       ]
     }),

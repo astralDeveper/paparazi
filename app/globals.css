@@ -16,6 +16,11 @@ body{
   color: #D2940A;
 }
 
+::selection {
+  color: #fff;
+  background-color: #D2940A;
+}
+
 
 /* ----------Home Banner------- */
 
