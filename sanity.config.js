@@ -19,8 +19,8 @@ import diplomaticDiaries from "@/sanity/schemas/DiplomaticDiaries";
 import powerplayBlogs from "@/sanity/schemas/PowerPlayBlogs";
 import navbar from "@/sanity/schemas/Navbar";
 import quizResult from "@/sanity/schemas/QuizResult";
-import Users from "@/sanity/schemas/Users";
-import Footer from "@/sanity/schemas/Footer";
+import users from "@/sanity/schemas/Users";
+import footer from "@/sanity/schemas/Footer";
 
 export default defineConfig({
   basePath: studioUrl,
@@ -33,42 +33,42 @@ export default defineConfig({
       home,
       services,
       // top,
-      quizResult,
-      Users,
-      Footer,
+      footer,
+      navbar,
       quiz,
       caseStudies,
       diplomaticDiaries,
       powerplayBlogs,
-      navbar
+      quizResult,
+      users,
     ]
   },
   plugins: [
     structureTool({ structure: pageStructure([
       about,
-      services,
       careers,
-      // top,
       home,
-      Footer,
+      services,
+      // top,
+      footer,
+      navbar,
       quiz,
       caseStudies,
       diplomaticDiaries,
       powerplayBlogs,
-      navbar,
     ])}),
     singletonPlugin([
       about.name,
-      services.name,
       careers.name,
-      // top.name,
       home.name,
-      Footer.name,
+      services.name,
+      // top.name,
+      footer.name,
+      navbar.name,
       quiz.name,
       caseStudies.name,
       diplomaticDiaries.name,
       powerplayBlogs.name,
-      navbar.name,
     ]),
     process.env.NODE_ENV === "development" && visionTool({ defaultApiVersion: apiVersion }),
   ].filter(Boolean),

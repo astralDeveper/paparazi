@@ -80,44 +80,54 @@ export default defineType({
         title: 'Section 3 Image',
     }),
     defineField({
-        name: 'positionCard',
-        title: 'Positions Card',
-        type: 'array',
-        of: [{
-            title: 'Address',
-            name: 'address',
-          type: 'object',
-          fields: [
-            
-            {
-              name: 'name',
-              type: 'string',
-              title: 'Name',
+      name: 'jobs',
+      title: 'Jobs',
+      type: 'array',
+      of: [{
+        title: 'Job',
+        name: 'job',
+        type: 'object',
+        fields: [
+          {
+            name: 'title',
+            type: 'string',
+            title: 'Job title',
+          },
+          {
+            name: 'location',
+            type: 'string',
+            title: 'Location',
+          },
+          {
+            name: 'type',
+            title: 'Type',
+            type: 'string',
+            options: {
+              list: [
+                { title: 'Full time', value: 'full-time' },
+                { title: 'Part time', value: 'part-time' },
+                { title: 'Contract', value: 'contract' },
+              ],
             },
-            {
-              name: 'location',
-              type: 'string',
-              title: 'Location',
-            },
-            {
-              name: 'time',
-              type: 'string',
-              title: 'Time',
-            },
-            {
-              name: 'vacancy',
-              type: 'string',
-              title: 'Vacancy',
-            },
-            {
-              name: 'deadline',
-              type: 'date',
-              title: 'Deadline',
-            },
-          ]
-        }]
-      }),
-
-
+          },
+          {
+            name: 'vacancy',
+            type: 'string',
+            title: 'Vacancy',
+          },
+          {
+            name: 'deadline',
+            type: 'date',
+            title: 'Deadline',
+          },
+          {
+            name: 'description',
+            title: 'Description',
+            type: "array",
+            of: [{ type: "block" }],
+          },
+        ]
+      }]
+    }),
   ],
 })

@@ -92,7 +92,7 @@ export default async function Footer() {
                   <input
                     type="text"
                     placeholder="Enter your Email"
-                    className="p-2 h-[50px] w-full outline-none px-3 text-black"
+                    className="p-2 h-[50px] w-full outline-none px-3 text-white"
                   />
                 </div>
                 <div>

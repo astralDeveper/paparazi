@@ -15,8 +15,8 @@ const SingersSection = ({ data }) => {
             {data.sec6button}
           </button>
         </div>
-        <div className="bg-red-200 w-full h-[500px]">
-          <img className="h-full w-full object-cover" src={urlForImage(data.sec6image).url()} alt="" />
+        <div className="bg-red-200 w-full">
+          <img className="h-full w-full object-cover grayscale" src={urlForImage(data.sec6image).url()} alt="" />
         </div>
       </div>
     </div>
