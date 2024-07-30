@@ -35,23 +35,17 @@ export default function JobCards({ careersData }) {
               onClick={() => openModal(job)}
             >
               <h3 className="px-6 text-lg font-medium mb-3">{job.title}</h3>
-              <div className="px-6 flex gap-2 flex-wrap justify-between border-b-2 border-neutral-600 py-5 w-full">
-                <div className="flex items-center">
-                  <span className="mr-1">
-                    <RiMapPin2Line className="text-blue-600" />
-                  </span>
+              <div className="px-6 flex gap-2 justify-between border-b-2 border-neutral-600 py-5 w-full">
+                <div className="flex items-center gap-2 flex-col ">
+                  <RiMapPin2Line className="text-blue-600" />
                   <p className="text-sm">{job.location}</p>
                 </div>
-                <div className="flex items-center">
-                  <span className="mr-1">
-                    <RiBriefcaseLine className="text-green-600" />
-                  </span>
+                <div className="flex items-center gap-2 flex-col ">
+                  <RiBriefcaseLine className="text-green-600" />
                   <p className="text-sm capitalize">{job.type}</p>
                 </div>
-                <div className="flex items-center">
-                  <span className="mr-1">
-                    <RiArticleLine className="text-orange-600" />
-                  </span>
+                <div className="flex items-center gap-2 flex-col ">
+                  <RiArticleLine className="text-orange-600" />
                   <p className="text-sm">{job.vacancy} Vacancy</p>
                 </div>
               </div>

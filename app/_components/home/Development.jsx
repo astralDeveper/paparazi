@@ -1,7 +1,7 @@
 'use client'
 
 import { urlForImage } from "@/sanity/lib/utils"
-import { RiCloseLine } from "@remixicon/react";
+import { RiCloseLine, RiPlayCircleLine, RiPlayLargeFill } from "@remixicon/react";
 import { useState } from "react";
 
 export default function Development({ data }) {
@@ -26,8 +26,13 @@ export default function Development({ data }) {
     </div>
 
     <article className="grid grid-cols-2 max-lg:grid-cols-1 gap-x-12 w-full mt-12">
-      <div className="w-full rounded-lg overflow-hidden cursor-pointer" onClick={() => openModal(data.sec3[0])}>
-        <img alt="ecommerce" className="w-full object-cover aspect-video grayscale" src={urlForImage(data.sec3[0]).url()} />
+      <div className="w-full rounded-lg overflow-hidden cursor-pointer relative group" onClick={() => openModal(data.sec3[0])}>
+        <img alt="ecommerce" className="w-full object-cover aspect-video grayscale " src={urlForImage(data.sec3[0]).url()} />
+        <div className="absolute inset-0 bg-black/30 group-hover:bg-black/35 transition-all">
+          <div className="absolute size-20 max-sm:size-14 top-6 right-6 group-hover:scale-110 transition-transform flex justify-center items-center bg-white rounded-full">
+            <RiPlayLargeFill className=" text-black size-16 max-sm:size-10" />
+          </div>
+        </div>
       </div>
 
       <div className="mt-12 w-full">
@@ -40,8 +45,14 @@ export default function Development({ data }) {
     <div className="grid grid-cols-3 max-md:grid-cols-1 justify-between mt-12 w-full gap-4">
       {data.sec3.slice(1, 4).map((item, i) => (
         <article key={i} className="p-4 w-full cursor-pointer" onClick={() => openModal(item)}>
-          <div className="w-full rounded-lg overflow-hidden">
+          <div className="w-full rounded-lg overflow-hidden relative group">
             <img alt="content" className="w-full object-cover aspect-video grayscale" src={urlForImage(item).url()} />
+            
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/35 transition-all">
+              <div className="absolute size-16 max-sm:size-12 top-6 right-6 group-hover:scale-110 transition-transform flex justify-center items-center bg-white rounded-full">
+                <RiPlayLargeFill className=" text-black size-12 max-sm:size-8" />
+              </div>
+            </div>
           </div>
           <h3 className="text-sm tracking-widest pt-4">{item.sec3title} <span className='text-golden'>{item.sec3date && new Intl.DateTimeFormat('en-US').format(new Date(item.sec3date))}</span></h3>
           <h2 className="mt-4 font-medium text-xl">{item.sec3heading}</h2>
