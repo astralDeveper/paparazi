@@ -1,42 +1,35 @@
 'use client'
-import React , {useRef , useState} from 'react'
-import {  signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../config/firebaseConfig';
+
+import React, { useRef, useState } from 'react'
+import { signInWithEmailAndPassword } from "firebase/auth";
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation'
+import { auth } from '../../config/firebaseConfig';
 
 const Login = () => {
-
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const emailRef = useRef()
   const passwordRef = useRef()
-
-
-
 
   function handleSubmit(e) {
     e.preventDefault();
     const emailVal = emailRef.current.value;
     const passwordVal = passwordRef.current.value;
 
-
     signInWithEmailAndPassword(auth, emailVal, passwordVal)
-    .then((userCredential) => {
-      // Signed in 
-      const user = userCredential.user;
-      console.log(user);
-          // Clear the input fields
-    emailRef.current.value = '';
-    passwordRef.current.value = '';
+      .then((userCredential) => {
+        const user = userCredential.user;
 
-    window.location.href = '/'
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-    });
+        emailRef.current.value = '';
+        passwordRef.current.value = '';
 
-  
-
+        const redirect = searchParams.get('redirect')
+        router.push(redirect || '/');
+      })
+      .catch((error) => {
+        console.error(error)
+      });
   }
 
 
@@ -75,15 +68,15 @@ const Login = () => {
                 name="password"
                 type="password"
                 autoComplete="current-password"
-                 placeholder='****'
-                 ref={passwordRef}
+                placeholder='●●●●●●'
+                ref={passwordRef}
                 required
-                 className="mt-3 appearance-none block w-full px-3 py-2 border border-yellow-500 rounded-md shadow-sm bg-transparent outline-none sm:text-sm"
+                className="mt-3 appearance-none block w-full px-3 py-2 border border-yellow-500 rounded-md shadow-sm bg-transparent outline-none sm:text-sm"
               />
             </div>
           </div>
 
-          
+
           <div className='pt-2 text-sm text-yellow-500 hover:text-yellow-600 transition-colors'>
             <Link href='/signup'><span>Don't have an Account?</span></Link>
           </div>
@@ -97,4 +90,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login

@@ -8,6 +8,8 @@ import { client } from "@/sanity/lib/client";
 import { auth } from "@/app/config/firebaseConfig";
 import { createQuizResult, updateQuizResult } from "@/app/_actions/create-quiz-result";
 import stars from "@/app/_assets/quiz/stars.svg"
+import perfectscore from "@/app/_assets/quiz/perfect-score.png"
+import { usePathname } from 'next/navigation';
 
 export default function QuizPage() {
   const [user, setUser] = useState(null);
@@ -342,10 +344,12 @@ function QuizSelect({ quizData, setSelectedQuiz}) {
 }
 
 function RedirectToLogin() {
+  const pathname = usePathname();
+
   return (
     <section className='text-center text-xl font-semibold px-4 py-24 sm:text-2xl flex items-center justify-center min-h-screen'>
       <p>
-        <Link href='/login' className='cursor-pointer text-yellow-500 hover:text-yellow-600 transition-colors'>Login</Link> to play quiz.
+        <Link href={`/login?redirect=${pathname}`} className='cursor-pointer text-yellow-500 hover:text-yellow-600 transition-colors'>Login</Link> to play quiz.
       </p>
     </section>
   )
