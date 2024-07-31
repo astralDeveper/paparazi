@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { auth } from "@/app/config/firebaseConfig";
-import { createQuizResult, updateQuizResult } from "@/app/_actions/create-quiz-result";
+// import { createQuizResult, updateQuizResult } from "@/app/_actions/create-quiz-result";
 import stars from "@/app/_assets/quiz/stars.svg"
 import perfectscore from "@/app/_assets/quiz/perfect-score.png"
 import { usePathname } from 'next/navigation';
@@ -14,73 +14,74 @@ import { usePathname } from 'next/navigation';
 export default function QuizPage() {
   const [user, setUser] = useState(null);
   const [quizData, setQuizData] = useState(null);
-  const [quizResultData, setQuizResultData] = useState(null);
+  // const [quizResultData, setQuizResultData] = useState(null);
   const [selectedQuiz, setSelectedQuiz] = useState('');
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [corporateQuizScore, setCorporateQuizScore] = useState(0);
-  const [culturalQuizScore, setCulturalQuizScore] = useState(0);
+  // const [corporateQuizScore, setCorporateQuizScore] = useState(0);
+  // const [culturalQuizScore, setCulturalQuizScore] = useState(0);
+  const [score, setScore] = useState(0);
   const [answerChecked, setAnswerChecked] = useState(false);
   const [answerCorrect, setAnswerCorrect] = useState(false);
 
-  const [submitResult, setSubmitResult] = useState(false);
+  // const [submitResult, setSubmitResult] = useState(false);
 
-  useEffect(() => {
-    if (!submitResult) return;
+  // useEffect(() => {
+  //   if (!submitResult) return;
 
-    const submit = async () => {
-      const data = {
-        userId: user.id,
-        username: user.username,
-        email: user.email,
-      }
+  //   const submit = async () => {
+  //     const data = {
+  //       userId: user.id,
+  //       username: user.username,
+  //       email: user.email,
+  //     }
 
-      if (quizResultData) {
-        if (quizResultData.hasTakenCorporateQuiz) {
-          data.hasTakenCorporateQuiz = quizResultData.hasTakenCorporateQuiz;
-          data.corporateQuizScore = quizResultData.corporateQuizScore;
-          data.hasTakenCulturalQuiz = true;
-          data.culturalQuizScore = culturalQuizScore;
-        } else if (quizResultData.hasTakenCulturalQuiz) {
-          data.hasTakenCorporateQuiz = true;
-          data.corporateQuizScore = corporateQuizScore;
-          data.hasTakenCulturalQuiz = quizResultData.hasTakenCulturalQuiz;
-          data.culturalQuizScore = quizResultData.culturalQuizScore;
-        }
+  //     if (quizResultData) {
+  //       if (quizResultData.hasTakenCorporateQuiz) {
+  //         data.hasTakenCorporateQuiz = quizResultData.hasTakenCorporateQuiz;
+  //         data.corporateQuizScore = quizResultData.corporateQuizScore;
+  //         data.hasTakenCulturalQuiz = true;
+  //         data.culturalQuizScore = culturalQuizScore;
+  //       } else if (quizResultData.hasTakenCulturalQuiz) {
+  //         data.hasTakenCorporateQuiz = true;
+  //         data.corporateQuizScore = corporateQuizScore;
+  //         data.hasTakenCulturalQuiz = quizResultData.hasTakenCulturalQuiz;
+  //         data.culturalQuizScore = quizResultData.culturalQuizScore;
+  //       }
 
-        try {
-          await updateQuizResult(quizResultData._id, data);
-          console.log('Sanity document updated:');
-        } catch (error) {
-          console.error(error)
-        }
-      } else {
-        if (selectedQuiz === 'corporateQuiz') {
-          data.hasTakenCorporateQuiz = true;
-          data.corporateQuizScore = corporateQuizScore;
-          data.hasTakenCulturalQuiz = false;
-          data.culturalQuizScore = 0;
-        } else if (selectedQuiz === 'culturalQuiz') {
-          data.hasTakenCorporateQuiz = false;
-          data.corporateQuizScore = 0;
-          data.hasTakenCulturalQuiz = true;
-          data.culturalQuizScore = culturalQuizScore;
-        }
-  
-        try {
-          await createQuizResult(data);
-          console.log('Sanity document created:');
-        } catch (error) {
-          console.error(error)
-        }
-      }
-    
-    }
-    setSubmitResult(false)
+  //       try {
+  //         await updateQuizResult(quizResultData._id, data);
+  //         console.log('Sanity document updated:');
+  //       } catch (error) {
+  //         console.error(error)
+  //       }
+  //     } else {
+  //       if (selectedQuiz === 'corporateQuiz') {
+  //         data.hasTakenCorporateQuiz = true;
+  //         data.corporateQuizScore = corporateQuizScore;
+  //         data.hasTakenCulturalQuiz = false;
+  //         data.culturalQuizScore = 0;
+  //       } else if (selectedQuiz === 'culturalQuiz') {
+  //         data.hasTakenCorporateQuiz = false;
+  //         data.corporateQuizScore = 0;
+  //         data.hasTakenCulturalQuiz = true;
+  //         data.culturalQuizScore = culturalQuizScore;
+  //       }
 
-    submit()
-  }, [submitResult, user, selectedQuiz, corporateQuizScore, culturalQuizScore, quizResultData])
+  //       try {
+  //         await createQuizResult(data);
+  //         console.log('Sanity document created:');
+  //       } catch (error) {
+  //         console.error(error)
+  //       }
+  //     }
+
+  //   }
+  //   setSubmitResult(false)
+
+  //   submit()
+  // }, [submitResult, user, selectedQuiz, corporateQuizScore, culturalQuizScore, quizResultData])
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -103,17 +104,17 @@ export default function QuizPage() {
       try {
         const quiz = await client.fetch(`*[_type == 'quiz'][0]{...}`);
         setQuizData(quiz);
-        
-        const quizResult = await client.fetch(`*[_type == 'quizResult' && userId == '${user.id}'][0]{...}`, {}, {
-          useCdn: false,
-          cache: 'no-store',
-        });
-        
-        if (quizResult) {
-          setQuizResultData(quizResult);
-          setCorporateQuizScore(quizResult.corporateQuizScore ?? 0);
-          setCulturalQuizScore(quizResult.culturalQuizScore ?? 0);
-        }
+
+        // const quizResult = await client.fetch(`*[_type == 'quizResult' && userId == '${user.id}'][0]{...}`, {}, {
+        //   useCdn: false,
+        //   cache: 'no-store',
+        // });
+
+        // if (quizResult) {
+          // setQuizResultData(quizResult);
+          // setCorporateQuizScore(quizResult.corporateQuizScore ?? 0);
+          // setCulturalQuizScore(quizResult.culturalQuizScore ?? 0);
+        // }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -134,15 +135,16 @@ export default function QuizPage() {
     if (selectedOption === null) return; // Do not check if no option is selected
 
     if (selectedOption === quizData[selectedQuiz][currentQuestionIndex].answer) {
-      selectedQuiz === 'corporateQuiz' && setCorporateQuizScore(corporateQuizScore + 1);
-      selectedQuiz === 'culturalQuiz' && setCulturalQuizScore(culturalQuizScore + 1);
+      // selectedQuiz === 'corporateQuiz' && setCorporateQuizScore(corporateQuizScore + 1);
+      // selectedQuiz === 'culturalQuiz' && setCulturalQuizScore(culturalQuizScore + 1);
+      setScore(score + 1)
       setAnswerCorrect(true);
     } else {
       setAnswerCorrect(false);
     }
     setAnswerChecked(true);
 
-    nextTimeoutRef.current = setTimeout(handleNextQuestion, 3500);
+    nextTimeoutRef.current = setTimeout(handleNextQuestion, 6000);
   };
 
   const handleNextQuestion = async () => {
@@ -151,7 +153,7 @@ export default function QuizPage() {
     setAnswerChecked(false);
     setAnswerCorrect(false);
 
-    if ((currentQuestionIndex + 1) === quizData[selectedQuiz].length) setSubmitResult(true);
+    // if ((currentQuestionIndex + 1) === quizData[selectedQuiz].length) setSubmitResult(true);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
@@ -175,43 +177,23 @@ export default function QuizPage() {
     )
   }
 
-  if (currentQuestionIndex >= quizData[selectedQuiz]?.length 
-      || (quizResultData && selectedQuiz === 'corporateQuiz' && quizResultData.hasTakenCorporateQuiz)
-      || (quizResultData && selectedQuiz === 'culturalQuiz' && quizResultData.hasTakenCulturalQuiz)
-    ) {
+  if (currentQuestionIndex >= quizData[selectedQuiz]?.length
+    // || (quizResultData && selectedQuiz === 'corporateQuiz' && quizResultData.hasTakenCorporateQuiz)
+    // || (quizResultData && selectedQuiz === 'culturalQuiz' && quizResultData.hasTakenCulturalQuiz)
+  ) {
     return (
       <section className='py-24'>
         <h1 className='text-3xl max-sm:text-2xl max-sm:font-medium font-semibold text-center uppercase'>
           {selectedQuiz === 'corporateQuiz' ? 'Corporate Powerplay Quiz' : 'Cultural Sensitivity Quiz'}
         </h1>
 
-        <Image src={stars} alt="stars" width={256} height={256} className="h-64 mx-auto" />
+        {/* <UserScore score={selectedQuiz === 'corporateQuiz' ? corporateQuizScore : culturalQuizScore} quizLength={quizData[selectedQuiz]?.length} /> */}
+        <UserScore score={score} quizLength={quizData[selectedQuiz]?.length} />
 
-        <p className="text-center mt-4 text-3xl font-semibold">
-          Your score:
-          {' '}
-          <span className="text-[#D2940A] font-semibold">{selectedQuiz === 'corporateQuiz' ? corporateQuizScore : culturalQuizScore}</span>
-          {' '}
-          /
-          {' '}
-          {quizData[selectedQuiz]?.length}
-        </p>
-
-        <div className="flex gap-6 justify-center items-center mt-4">
-          <p>
-            Correct Answer:
-            {' '}
-            <span className="text-green-600">
-              {selectedQuiz === 'corporateQuiz' ? corporateQuizScore : culturalQuizScore}
-            </span>
-          </p>
-          <p>
-            Wrong Answer:
-            {' '}
-            <span className="text-red-600">
-              {quizData[selectedQuiz]?.length - Number(selectedQuiz === 'corporateQuiz' ? corporateQuizScore : culturalQuizScore)}
-            </span>
-          </p>
+        <div className="flex justify-center mt-6">
+          <button onClick={() => {setSelectedQuiz(''); setCurrentQuestionIndex(0);}} className="max-w-max text-center hover:bg-yellow-500 p-4 ring-1 ring-yellow-500 ring-inset rounded-lg transition-colors text-yellow-500 hover:text-black">
+            Restart quiz
+          </button>
         </div>
       </section>
     )
@@ -237,8 +219,8 @@ export default function QuizPage() {
 
       <div className="flex flex-col gap-4 items-center mt-12 justify-center max-w-screen-sm mx-auto">
         <div className="w-full h-4 bg-white rounded-full dark:bg-white">
-          <div 
-            className="h-4 bg-[#D2940A] rounded-lg dark:bg-[#D2940A] transition-all" 
+          <div
+            className="h-4 bg-[#D2940A] rounded-lg dark:bg-[#D2940A] transition-all"
             style={{ width: `${((currentQuestionIndex + 1) / quizData[selectedQuiz].length) * 100}%` }}
           ></div>
         </div>
@@ -261,14 +243,14 @@ export default function QuizPage() {
           Next
         </button>
       </div>
-      
+
       {answerChecked && (
         <div className={`max-w-lg mx-auto w-full mt-12 bg-[#363636] p-4 rounded-lg border-2 text-center ${answerCorrect ? 'border-green-600' : 'border-red-600'}`}>
           <p>Your Answer is <span className='font-semibold'>{selectedOption}</span></p>
           <p className={`text-lg ${answerCorrect ? 'text-green-600' : 'text-red-600'}`}>{answerCorrect ? 'Correct!' : 'Incorrect!'}</p>
           {/* {!answerCorrect && <p>Correct answer is: {quizData[selectedQuiz][currentQuestionIndex].answer}</p>} */}
           <p>
-            Your score: <span>{selectedQuiz === 'corporateQuiz' ? corporateQuizScore : culturalQuizScore}</span> / {quizData[selectedQuiz]?.length}
+            Your score: <span>{score}</span> / {quizData[selectedQuiz]?.length}
           </p>
         </div>
       )}
@@ -313,7 +295,7 @@ function QuizInput({ option, selectedOption, onOptionChange, label, answerChecke
   );
 };
 
-function QuizSelect({ quizData, setSelectedQuiz}) {
+function QuizSelect({ quizData, setSelectedQuiz }) {
   return (
     <section className='text-center px-4 py-24 min-h-screen'>
       <h2 className="text-xl max-sm:text-lg font-medium uppercase">
@@ -352,5 +334,40 @@ function RedirectToLogin() {
         <Link href={`/login?redirect=${pathname}`} className='cursor-pointer text-yellow-500 hover:text-yellow-600 transition-colors'>Login</Link> to play quiz.
       </p>
     </section>
+  )
+}
+
+function UserScore({ score, quizLength }) {
+  return (
+    <>
+      <Image src={score === quizLength ? perfectscore : stars} alt="stars" width={256} height={256} className="h-64 mx-auto" />
+
+      <p className="text-center mt-4 text-3xl font-semibold">
+        Your score:
+        {' '}
+        <span className="text-[#D2940A] font-semibold">{score}</span>
+        {' '}
+        /
+        {' '}
+        {quizLength}
+      </p>
+
+      <div className="flex gap-6 justify-center items-center mt-4">
+        <p>
+          Correct Answer:
+          {' '}
+          <span className="text-green-600">
+            {score}
+          </span>
+        </p>
+        <p>
+          Wrong Answer:
+          {' '}
+          <span className="text-red-600">
+            {quizLength - Number(score)}
+          </span>
+        </p>
+      </div>
+    </>
   )
 }
