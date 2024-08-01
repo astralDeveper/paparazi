@@ -191,7 +191,7 @@ export default function QuizPage() {
         <UserScore score={score} quizLength={quizData[selectedQuiz]?.length} />
 
         <div className="flex justify-center mt-6">
-          <button onClick={() => {setSelectedQuiz(''); setCurrentQuestionIndex(0);}} className="max-w-max text-center hover:bg-yellow-500 p-4 ring-1 ring-yellow-500 ring-inset rounded-lg transition-colors text-yellow-500 hover:text-black">
+          <button onClick={() => {setSelectedQuiz(''); setCurrentQuestionIndex(0); setScore(0);}} className="max-w-max text-center hover:bg-yellow-500 p-4 ring-1 ring-yellow-500 ring-inset rounded-lg transition-colors text-yellow-500 hover:text-black">
             Restart quiz
           </button>
         </div>
@@ -340,7 +340,9 @@ function RedirectToLogin() {
 function UserScore({ score, quizLength }) {
   return (
     <>
-      <Image src={score === quizLength ? perfectscore : stars} alt="stars" width={256} height={256} className="h-64 mx-auto" />
+      <div className="mt-10">
+        <Image src={score === quizLength ? perfectscore : stars} alt="stars" width={384} height={384} className="h-96 max-sm:h-60 mx-auto object-contain" />
+      </div>
 
       <p className="text-center mt-4 text-3xl font-semibold">
         Your score:
