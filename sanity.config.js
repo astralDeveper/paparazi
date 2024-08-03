@@ -18,8 +18,9 @@ import caseStudies from "@/sanity/schemas/CaseStudies";
 import diplomaticDiaries from "@/sanity/schemas/DiplomaticDiaries";
 import powerplayBlogs from "@/sanity/schemas/PowerPlayBlogs";
 import navbar from "@/sanity/schemas/Navbar";
-import quizResult from "@/sanity/schemas/QuizResult";
-import users from "@/sanity/schemas/Users";
+import club from "@/sanity/schemas/Club";
+// import quizResult from "@/sanity/schemas/QuizResult";
+// import users from "@/sanity/schemas/Users";
 import footer from "@/sanity/schemas/Footer";
 import Terms from "./sanity/schemas/Terms";
 
@@ -33,6 +34,7 @@ export default defineConfig({
       careers,
       home,
       services,
+      club,
       // top,
       footer,
       navbar,
@@ -41,7 +43,7 @@ export default defineConfig({
       diplomaticDiaries,
       Terms,
       powerplayBlogs,
-      quizResult,
+      // quizResult,
       // users,
     ]
   },
@@ -51,6 +53,7 @@ export default defineConfig({
       careers,
       home,
       services,
+      club,
       // top,
       footer,
       navbar,
@@ -65,6 +68,7 @@ export default defineConfig({
       careers.name,
       home.name,
       services.name,
+      club.name,
       // top.name,
       footer.name,
       navbar.name,

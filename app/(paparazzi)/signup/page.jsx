@@ -46,8 +46,6 @@ const Signup = () => {
         const errorMessage = error.message;
         console.log(errorMessage);
       });
-
-
   }
 
 
@@ -105,7 +103,7 @@ const Signup = () => {
                   name="password"
                   type="password"
                   autoComplete="new-password"
-                  placeholder='****'
+                  placeholder='●●●●●●'
                   ref={passwordRef}
                   required
                   className="mt-3 appearance-none block w-full px-3 py-2 border border-yellow-500 rounded-md shadow-sm bg-transparent outline-none sm:text-sm"
@@ -132,4 +130,3 @@ const Signup = () => {
 }
 
 export default Signup
-

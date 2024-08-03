@@ -177,6 +177,15 @@ export default function Navbar() {
             <li className="mb-2">
               <Link
                 onClick={toggleMenu}
+                href="/social-club"
+                className={`after:block after:w-0 hover:after:w-full after:transition-all after:h-0.5 after:bg-yellow-500 [&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/social-club" ? "active" : ""}`}
+              >
+                Social Club
+              </Link>
+            </li>
+            <li className="mb-2">
+              <Link
+                onClick={toggleMenu}
                 href="/quiz"
                 className={`after:block after:w-0 hover:after:w-full after:transition-all after:h-0.5 after:bg-yellow-500 [&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/quiz" ? "active" : ""}`}
               >

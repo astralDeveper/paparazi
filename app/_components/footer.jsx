@@ -20,7 +20,7 @@ export default function Footer() {
     <div>
       <div className="bg-[#252525] w-full h-auto p-10 max-sm:p-4 ">
         <div className="mx-auto max-w-screen-2xl">
-          <div className="grid grid-cols-2 justify-between items-center max-sm:grid-cols-1 flex-wrap gap-4">
+          <div className="">
             <div className="flex items-center gap-4 max-lg:flex-col">
               <div>
                 <img src="/paparazzi-logo.png" alt="" />

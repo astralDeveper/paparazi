@@ -6,27 +6,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { auth } from "@/app/config/firebaseConfig";
-import { createQuizResult, updateQuizResult } from "@/app/_actions/create-quiz-result";
+// import { createQuizResult, updateQuizResult } from "@/app/_actions/create-quiz-result";
 import stars from "@/app/_assets/quiz/stars.svg"
 import perfectscore from "@/app/_assets/quiz/perfect-score.png"
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 export default function QuizPage() {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [quizData, setQuizData] = useState(null);
-  const [quizResultData, setQuizResultData] = useState(null);
+  // const [quizResultData, setQuizResultData] = useState(null);
   const [selectedQuiz, setSelectedQuiz] = useState('');
 
   const [selectedOption, setSelectedOption] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [corporateQuizScore, setCorporateQuizScore] = useState(0);
-  const [culturalQuizScore, setCulturalQuizScore] = useState(0);
+  // const [corporateQuizScore, setCorporateQuizScore] = useState(0);
+  // const [culturalQuizScore, setCulturalQuizScore] = useState(0);
   const [score, setScore] = useState(0);
   const [answerChecked, setAnswerChecked] = useState(false);
   const [answerCorrect, setAnswerCorrect] = useState(false);
 
-  const [submitResult, setSubmitResult] = useState(false);
+  // const [submitResult, setSubmitResult] = useState(false);
 
   // useEffect(() => {
   //   if (!submitResult) return;
@@ -192,7 +192,7 @@ export default function QuizPage() {
         <UserScore score={score} quizLength={quizData[selectedQuiz]?.length} />
 
         <div className="flex justify-center mt-6">
-          <button onClick={() => {setSelectedQuiz(''); setCurrentQuestionIndex(0);}} className="max-w-max text-center hover:bg-yellow-500 p-4 ring-1 ring-yellow-500 ring-inset rounded-lg transition-colors text-yellow-500 hover:text-black">
+          <button onClick={() => {setSelectedQuiz(''); setCurrentQuestionIndex(0); setScore(0);}} className="max-w-max text-center hover:bg-yellow-500 p-4 ring-1 ring-yellow-500 ring-inset rounded-lg transition-colors text-yellow-500 hover:text-black">
             Restart quiz
           </button>
         </div>
@@ -341,7 +341,9 @@ function RedirectToLogin() {
 function UserScore({ score, quizLength }) {
   return (
     <>
-      <Image src={score === quizLength ? perfectscore : stars} alt="stars" width={256} height={256} className="h-64 mx-auto" />
+      <div className="mt-10">
+        <Image src={score === quizLength ? perfectscore : stars} alt="stars" width={384} height={384} className="h-96 max-sm:h-60 mx-auto object-contain" />
+      </div>
 
       <p className="text-center mt-4 text-3xl font-semibold">
         Your score:
