@@ -1,13 +1,20 @@
+"use client";
 import { client } from "@/sanity/lib/client";
+import { useEffect, useState } from "react";
 
-export default async function Footer() {
-  let footerData;
+export default function Footer() {
+  const [footerData, setFooterData] = useState(null);
+  useEffect(() => {
+    const footerData = async () => {
+      const footer = await client.fetch(`*[_type == 'Footer'][0]{...}`);
+      setFooterData(footer);
+    };
+    footerData();
+  }, []);
 
-  try {
-    footerData = await client.fetch(`*[_type == 'Footer'][0]{...}`);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+  if (!footerData) return null;
+  // console.log(footerData);
+  
 
   return (
     <div>
@@ -52,40 +59,68 @@ export default async function Footer() {
 
           <div className="grid grid-cols-[1fr_1fr_1fr_1fr_auto] max-lg:grid-cols-2 *:max-w-96 gap-10 max-sm:gap-6 mt-16 mb-6">
             <div>
-              <h2 className="text-white text-xl font-semibold">
-                Company Info
-              </h2>
+              <h2 className="text-white text-xl font-semibold">Company Info</h2>
               <ul className="flex flex-col gap-4 text-gray-300 mt-6">
-                {footerData.comapanyInfo.map((item) =>  <a key={item._key} href={item.route} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
+                {footerData.comapanyInfo.map((item) => (
+                  <a
+                    key={item._key}
+                    href={item.route}
+                    className="hover:text-yellow-500 transition-colors"
+                  >
+                    <li className="cursor-pointer">{item.label}</li>
+                  </a>
+                ))}
               </ul>
             </div>
 
             <div>
               <h2 className="text-white text-xl font-semibold ">Legal</h2>
               <ul className="flex flex-col gap-4 text-gray-300 mt-6">
-                {footerData.legal.map((item)=> <a key={item._key} href={item.url} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
+                {footerData.legal.map((item) => (
+                  <a
+                    key={item._key}
+                    href={item.url}
+                    className="hover:text-yellow-500 transition-colors"
+                  >
+                    <li className="cursor-pointer">{item.label}</li>
+                  </a>
+                ))}
               </ul>
             </div>
 
             <div>
               <h2 className="text-white text-xl font-semibold">Features</h2>
               <ul className="flex flex-col gap-4 text-gray-300 mt-6">
-                {footerData.features.map((item)=> <a key={item._key} href={item.url} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
+                {footerData.features.map((item) => (
+                  <a
+                    key={item._key}
+                    href={item.url}
+                    className="hover:text-yellow-500 transition-colors"
+                  >
+                    <li className="cursor-pointer">{item.label}</li>
+                  </a>
+                ))}
               </ul>
             </div>
 
             <div className="">
               <h2 className="text-white text-xl font-semibold">Resources</h2>
               <ul className="flex flex-col gap-4 text-gray-300 mt-6">
-                {footerData.resources.map((item)=> <a key={item._key} href={item.url} className="hover:text-yellow-500 transition-colors" ><li className="cursor-pointer">{item.label}</li></a>)}
+                {footerData.resources.map((item) => (
+                  <a
+                    key={item._key}
+                    href={item.url}
+                    className="hover:text-yellow-500 transition-colors"
+                  >
+                    <li className="cursor-pointer">{item.label}</li>
+                  </a>
+                ))}
               </ul>
             </div>
 
             <div className="max-lg:col-span-2">
               <div>
-                <h2 className="text-white text-xl font-bold">
-                  Company Info
-                </h2>
+                <h2 className="text-white text-xl font-bold">Company Info</h2>
               </div>
               <div className="flex items-center mt-[8%]">
                 <div className="basis-3/5 max-w-96 flex-1">
@@ -107,9 +142,7 @@ export default async function Footer() {
         </div>
       </div>
       <div className="bg-black text-center p-4 text-white">
-        <p>
-          {footerData.copyRight}
-        </p>
+        <p>{footerData.copyRight}</p>
       </div>
     </div>
   );

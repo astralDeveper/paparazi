@@ -3,9 +3,11 @@ import React , {useRef , useState} from 'react'
 import {  signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../config/firebaseConfig';
 import Link from 'next/link';
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const Login = () => {
-
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const emailRef = useRef()
   const passwordRef = useRef()
 
@@ -23,12 +25,12 @@ const Login = () => {
       // Signed in 
       const user = userCredential.user;
       console.log(user);
-          // Clear the input fields
-    emailRef.current.value = '';
-    passwordRef.current.value = '';
+      
+      emailRef.current.value = '';
+      passwordRef.current.value = '';
 
-    window.location.href = '/'
-      // ...
+      const redirect = searchParams.get('redirect')
+      router.push(redirect || '/');
     })
     .catch((error) => {
       const errorCode = error.code;

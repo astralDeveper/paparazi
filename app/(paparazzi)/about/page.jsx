@@ -1,7 +1,7 @@
+"use client"
 import {
   RiHistoryLine,
   RiHome5Line,
-  RiMailLine,
   RiMentalHealthLine,
   RiRocket2Line,
   RiShieldStarLine,
@@ -11,18 +11,21 @@ import { PortableText } from '@portabletext/react'
 import { urlForImage } from "@/sanity/lib/utils";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
+import { useEffect, useState } from "react";
 
-export default async function About() {
-  let aboutData = null;
-  
-  try {
-    const about = await client.fetch(groq`*[_type == 'About'][0]{...}`, {}, {
-      next: {tags: ['About']}
-    });
-    aboutData = about
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+export default  function About() {
+  const [aboutData, setAboutData] = useState(null);
+  useEffect(() => {
+    const fetchAboutData = async () => {
+        const about = await client.fetch(groq`*[_type == 'About'][0]{...}`, {}, {
+          next: { tags: ['About'] },
+        });
+        setAboutData(about);
+      
+    };
+
+    fetchAboutData();
+  }, [aboutData]);
 
   if (!aboutData) return null;
 
@@ -114,19 +117,6 @@ export default async function About() {
             {/* Leadership And Governance Tab */}
             <Tabs.Content value="leadership-and-governance">
               <PortableText value={aboutData.tab4} components={portabletextComponents} />
-
-              <div className="mt-12 mb-12 grid grid-cols-2 gap-10 max-xl:justify-items-center max-sm:grid-cols-1">
-                {aboutData?.trustee.map((item, i) => {
-                  return (
-                    <AboutCards
-                      key={i}
-                      Name={item.name}
-                      Designation={item.designation}
-                      Image={item}
-                    />
-                  );
-                })}
-              </div>
             </Tabs.Content>
             
             {/* Our Mission Tab */}
