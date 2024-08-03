@@ -46,10 +46,7 @@ export default function Services() {
 
     fetchData();
   }, []);
-  
 
-  console.log(servicesData.feedback[0].asset._ref);
-  
   if (!servicesData) return null;
 
   return (
