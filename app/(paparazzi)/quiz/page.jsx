@@ -12,7 +12,6 @@ import perfectscore from "@/app/_assets/quiz/perfect-score.png"
 import { usePathname } from 'next/navigation';
 
 export default function QuizPage() {
-  const router = useRouter();
   const [user, setUser] = useState(null);
   const [quizData, setQuizData] = useState(null);
   // const [quizResultData, setQuizResultData] = useState(null);
