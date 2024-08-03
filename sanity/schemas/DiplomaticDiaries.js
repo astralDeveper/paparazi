@@ -48,6 +48,28 @@ export default defineType({
               title: "Description",
               type: "string",
             },
+            {
+              name: "subHeading2",
+              title: "sub Heading2",
+              type: "string",
+            },
+            {
+              name: "Heading2",
+              title: "Heading2",
+              type: "string",
+            },
+            {
+              name: "para",
+              title: "para",
+              type: "string",
+            },
+          
+          {
+              name: 'description2',
+              title: 'description2',
+              type: "array",
+              of: [{ type: "block" }],
+            },
           ],
         },
       ],
