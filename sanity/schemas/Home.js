@@ -28,6 +28,10 @@ export default defineType({
         name: 'headerpara',
         type: 'string',
         title: 'Header Paragrapgh',
+      }), defineField({
+        name: 'subheaderpara',
+        type: 'string',
+        title: 'Sub Header Paragrapgh',
       }),
       defineField({
         name: 'button',
@@ -288,6 +292,10 @@ export default defineType({
               name: 'sec7date',
               type: 'datetime',
               title: 'Section7 Date',
+            }, {
+              name: 'sec7subimage',
+              type: 'image',
+              title: 'Sec7subimage ',
             },
             {
                 name: 'sec7paragraph',

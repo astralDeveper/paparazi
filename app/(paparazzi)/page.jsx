@@ -1,3 +1,4 @@
+"use client"
 import Banner from '@/app/_components/home/Banner'
 import Blogs from '@/app/_components/home/Blogs'
 import Development from '@/app/_components/home/Development'
@@ -9,33 +10,36 @@ import DevCards2 from '@/app/_components/home/DevCards2'
 import Solutions from '@/app/_components/home/Solutions'
 import SliderSection from '@/app/_components/home/SliderSection'
 import { client } from '@/sanity/lib/client'
+import { useEffect, useState } from 'react'
 
-export default async function HomePage() {
-  let data = null;
+export default function HomePage() {
+  const [home , setHome] = useState(null)
+  useEffect(() => {
+    const fetchHomeData = async () => {
+      const homepageData = await client.fetch(`*[_type == 'Home'][0]{...}`, {}, {
+        next: { tags: ['Home'] }
+      });
+     setHome(homepageData)
+    }
+    fetchHomeData()
+  }, [home])
 
-  try {
-    const homepageData = await client.fetch(`*[_type == 'Home']{...}`, {}, {
-      next: { tags: ['Home'] }
-    });
-    data = homepageData[0];
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
 
-  if (!data) return null;
+
+  if (!home) return null;
 
   return (
     <div>
-      <Banner data={data}/>
-      <Blogs data={data}/>
-      <Development data={data}/>
-      <AboutUs data={data}/>
-      <BussinessSection data={data}/>
-      <SingersSection data={data}/>
-      <DevCards2 data={data}/>
-      <StrategicIntelligence data={data}/>
-      <Solutions data={data}/>
-      <SliderSection data={data}/>
+      <Banner data={home}/>
+      <Blogs data={home}/>
+      <Development data={home}/>
+      <BussinessSection data={home}/>
+      <SingersSection data={home}/>
+      <DevCards2 data={home}/>
+      <StrategicIntelligence data={home}/>
+      <AboutUs data={home}/>
+      <Solutions data={home}/>
+      <SliderSection data={home}/>
     </div>
   );
 }

@@ -10,8 +10,8 @@ const Solutions = ({data}) => {
                 <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
                     {data.sec9card.map((item, i) => (
                         <div key={i} className="p-4 md:w-1/3 sm:mb-0 mb-6">
-                            <div className="rounded-lg h-64 overflow-hidden">
-                                <img alt="content" className="object-cover object-center h-full w-full px-10 pt-10" src={urlForImage(item).url()} />
+                          <div className="px-8 pt-8  w-full bg-white rounded-lg flex items-end">
+                                <img alt="content" className="object-cover object-bottom " src={urlForImage(item).url()} />
                             </div>
                             <div className='px-10'>
                             <h2 className="text-xl font-medium title-font mt-5">{item.sec9title}</h2>
@@ -19,7 +19,6 @@ const Solutions = ({data}) => {
                         </div>
                         </div>
                     ))}
-                    
                 </div>
             </div>
         </section>

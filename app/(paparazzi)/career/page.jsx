@@ -1,19 +1,27 @@
+"use client";
 import { groq } from "next-sanity";
 import { urlForImage } from "@/sanity/lib/utils";
 import { client } from "@/sanity/lib/client";
 import Section4 from "@/app/_components/career/job-cards";
+import { useEffect, useState } from "react";
 
-export default async function Career() {
-  let careerData = null;
+export default function Career() {
+  const [careerData, setCareerData] = useState(null);
 
-  try {
-    const career = await client.fetch(groq`*[_type == 'Careers'][0]{...}`, {}, {
-      next: { tags: ["Careers"] },
-    });
-    careerData = career;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const career = await client.fetch(
+        groq`*[_type == 'Careers'][0]{...}`,
+        {},
+        {
+          next: { tags: ["Careers"] },
+        }
+      );
+      setCareerData(career);
+    };
+
+    fetchData();
+  }, []);
 
   if (!careerData) return null;
 
@@ -22,7 +30,7 @@ export default async function Career() {
       <Section1 careersData={careerData} />
       <Section2 careersData={careerData} />
       <Section3 careersData={careerData} />
-      <Section4 careersData={careerData} />
+      {/* <Section4 careersData={careerData} /> */}
     </div>
   );
 }
@@ -38,6 +46,12 @@ function Section1({ careersData }) {
           <p className="mb-8 leading-relaxed text-gray-300 md:text-1xl lg:text-1xl xl:text-1xl">
             {careersData.paragraph1}
           </p>
+          <h4 className="mb-8 leading-relaxed text-gray-300 font-semibold md:text-1xl lg:text-xl xl:text-1xl">
+            {careersData.subparagraph2}
+          </h4>
+          <h4 className="mb-8 leading-relaxed text-gray-300 font-semibold md:text-1xl lg:text-xl xl:text-1xl">
+            {careersData.subparagraph3}
+          </h4>
         </div>
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 bg-white rounded-3xl">
           <img
@@ -105,7 +119,7 @@ function Section2({ careersData }) {
 
 function Section3({ careersData }) {
   return (
-    <section className=" bg-white body-font">
+    <section className=" bg-white body-font mb-16">
       <div className="max-w-7xl container mx-auto flex px-5 py-20 md:flex-row flex-col items-center">
         <div className="text-gray-800 lg:flex-grow md:w-1/2 lg:pr-40 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h3 className="tracking-widest text-xs title-font font-medium text-golden mb-1">
@@ -129,4 +143,3 @@ function Section3({ careersData }) {
     </section>
   );
 }
-

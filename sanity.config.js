@@ -21,6 +21,7 @@ import navbar from "@/sanity/schemas/Navbar";
 import quizResult from "@/sanity/schemas/QuizResult";
 import users from "@/sanity/schemas/Users";
 import footer from "@/sanity/schemas/Footer";
+import Terms from "./sanity/schemas/Terms";
 
 export default defineConfig({
   basePath: studioUrl,
@@ -38,6 +39,7 @@ export default defineConfig({
       quiz,
       caseStudies,
       diplomaticDiaries,
+      Terms,
       powerplayBlogs,
       quizResult,
       // users,
@@ -52,6 +54,7 @@ export default defineConfig({
       // top,
       footer,
       navbar,
+      Terms,
       quiz,
       caseStudies,
       diplomaticDiaries,

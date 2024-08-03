@@ -19,6 +19,16 @@ export default defineType({
       title: 'Section 1 Paragraph',
     }),
     defineField({
+      name: 'subparagraph2',
+      type: 'string',
+      title: 'Section 1 Paragraph2',
+    }),
+    defineField({
+      name: 'subparagraph3',
+      type: 'string',
+      title: 'Section 1 Paragraph3',
+    }),
+    defineField({
       name: 'image1',
       type: 'image',
       title: 'Section 1 Image',
