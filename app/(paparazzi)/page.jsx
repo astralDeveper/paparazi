@@ -14,10 +14,10 @@ export default async function HomePage() {
   let data = null;
 
   try {
-    const homepageData = await client.fetch(`*[_type == 'Home'][0]{...}`, {}, {
+    const homepageData = await client.fetch(`*[_type == 'Home']{...}`, {}, {
       next: { tags: ['Home'] }
     });
-    data = homepageData;
+    data = homepageData[0];
   } catch (error) {
     console.error("Error fetching data:", error);
   }
