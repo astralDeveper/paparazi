@@ -26,7 +26,7 @@ console.log(termsData);
   if (!termsData) return null;
 
   return (
-    <div className='w-[90%] mx-auto mt-10'>
+    <div className='w-[90%] mx-auto mt-10 pb-20'>
       <h1 className='text-3xl font-semibold'>{termsData.heading}</h1>
       <h5 className='mt-6 mb-6'>{termsData.headerline}</h5>
       <PortableText value={termsData.paragraph} />
