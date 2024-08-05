@@ -14,19 +14,15 @@ export default defineType({
       title: 'Title',
     }),
     defineField({
-      name: 'paragraph',
-      type: 'text',
-      title: 'Paragraph',
-    }),
-    defineField({
       name: 'paragraph2',
       type: 'text',
       title: 'Paragraph 2',
     }),
     defineField({
-      name: 'image',
-      type: 'image',
-      title: 'Image',
+      name: 'description',
+      title:"description",
+      type: "array",
+      of: [{ type: "block" }],
     }),
   ],
 })

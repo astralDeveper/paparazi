@@ -1,42 +1,64 @@
-import { groq } from "next-sanity";
+"use client"
+import { groq, PortableText } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/utils";
+import { useEffect, useState } from "react";
+// Define the serializers for PortableText if needed
+const serializers = {
+  types: {
+    // Define serializers for different types of blocks if needed
+  },
+  marks: {
+    // Define serializers for different marks if needed
+  },
+  list:{},
+  listItem:{}
+};
+export default function SocialClubPage() {
+  const [clubData, setClubData] = useState(null);
+  useEffect(() => {
+    const fetchClubData = async () => {
+        const about = await client.fetch(groq`*[_type == 'socialClub'][0]{...}`, {}, {
+          next: { tags: ['socialClub'] },
+        });
+        setClubData(about);
+      
+    };
 
-export default async function SocialClubPage() {
-  let clubData = null;
-
-  try {
-    const club = await client.fetch(groq`*[_type == 'socialClub']{...}`, {}, {
-      next: { tags: ['socialClub']}
-    });
-    console.log(club);
-    clubData = club[0];
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
+    fetchClubData();
+  }, [clubData]);
+  // console.log(clubData);
+  
 
   if (!clubData) return null;
 
   return (
-    <section className="p-24 max-w-screen-2xl mx-auto max-xl:p-10 max-sm:p-5">
+    <section className="p-24 py-10 max-w-screen-2xl mx-auto max-xl:p-10 max-sm:p-5">
       <div className="bg-black max-xl:p-12 p-20 max-sm:p-8">
         <div className="max-w-screen-lg">
           <h1 className="text-3xl font-bold leading-[45px] max-sm:text-xl">
             {clubData.title}
           </h1>
-          <p className="mt-6 max-sm:text-sm">{clubData.paragraph}</p>
+          {/* <p className="mt-6 max-sm:text-sm">{clubData.paragraph}</p> */}
         </div>
 
-        <div className="grid grid-cols-2 gap-20 max-sm:gap-14 mt-20 max-sm:mt-12 justify-items-center max-lg:grid-cols-1">
+        <div className="">
           <p>
             {clubData.paragraph2}
           </p>
 
-          <div>
-            <img width={500} height={400} className="object-cover w-full grayscale" src={urlForImage(clubData.image).url()} />
-          </div>
+          
+        </div>
+        <div className="leading-8">
+          <PortableText value={clubData.description} components={portabletextComponents}/>
         </div>
       </div>
     </section>
   );
+}
+const portabletextComponents = {
+  block: { 
+    h2: ({children}) => <h2 className="text-3xl font-semibold mb-6 [&:not(:first-of-type)]:mt-8">{children}</h2>,
+    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4">{children}</p>
+  } 
 }

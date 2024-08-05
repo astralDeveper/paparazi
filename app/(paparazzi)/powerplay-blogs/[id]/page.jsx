@@ -6,6 +6,7 @@ import Courseimg from "../../../_assets/home/Course.png";
 import { client } from "@/sanity/lib/client";
 import { groq, PortableText } from "next-sanity";
 import { useParams } from "next/navigation";
+import { urlForImage } from "@/sanity/lib/utils";
 const Page = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -59,7 +60,7 @@ const Page = () => {
         <h1 className="text-center text-3xl max-sm:text-2xl font-semibold">
           {value.DetailsTopHeading}
         </h1>
-        <p className="text-center mt-16">
+        <p className="text-center mt-16 max-sm:text-sm">
           {value.DetailsTopPara}
         </p>
       </div>
@@ -68,60 +69,20 @@ const Page = () => {
         <h2 className="text-2xl font-semibold max-sm:text-2xl w-full">
           {value.DetailsMainHeading}
         </h2>
-        <div className="flex mt-10 gap-4 ">
-          <PortableText className=" max-sm:text-sm w-full" value={value.DetailsMainPara1}/>
+        <div className="flex max-lg:flex-col max-lg:items-center mt-10 gap-4 leading-[1.5rem] max-sm:leading-[1.5rem] max-sm:text-sm">
+          <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara1}/>
            
           
-          <Image
-            className="w-[600px] h-fit"
-            src={Courseimg}
+          <img
+            className="w-[600px] h-fit max-md:w-full grayscale mb-2"
+            src={urlForImage(value.image).url()}
             alt="Course Image"
           />
         </div>
       </div>
 
-      <div className="w-full max-w-screen-2xl px-6 mx-auto mt-2">
-        <p className="leading-6 max-sm:text-sm">
-          Mirroring and Matching: Subtly mirror the body language of others to
-          build rapport and establish trust. This doesn't mean mimicking
-          everything they do, but rather aligning your posture and gestures
-          occasionally to create a sense of connection. By mastering these
-          nonverbal cues, you can convey assertiveness without appearing
-          aggressive. You'll come across as a confident and capable leader,
-          ready to navigate any business discussion. Are You Smiling Too Much?
-          Nothing grabs the attention of others better than a charming smile.
-          However, it might surprise you to learn that you could be smiling too
-          much. While a genuine smile can work wonders for approachability and
-          building rapport, excessive smiling can diminish your authority and
-          assertiveness. Here's why: Power Dynamics: A smile can sometimes be
-          interpreted as a sign of submissiveness, particularly during
-          negotiations. In a hierarchical dynamic, those with higher power tend
-          to smile less frequently. Confidence and Control: Smiling too much can
-          be perceived as a lack of confidence or uncertainty. This can be
-          especially true for women in leadership roles, where assertive
-          behavior is sometimes misconstrued as aggression. So How Much Should
-          You Smile? The key is to find a balance. Here are some tips: The
-          Genuine Grin: A warm, genuine smile can light up a room and make you
-          seem approachable. Use this to your advantage during introductions and
-          greetings. The Confident Smirk: A subtle smile or smirk can
-          communicate confidence and control, particularly during discussions
-          where you're presenting ideas or making proposals. Take a Breath and
-          Slow Down The easiest way to tell when someone is nervous is that they
-          talk too fast and their body language becomes erratic, with fast hand
-          motions, blinking, stuttering, and other such tells. Before important
-          corporate meetings or negotiations, take a breath and consciously slow
-          down your mind and your body. Practice talking in the mirror if you
-          have to. By talking slower, those around you will understand you
-          better, and you'll give yourself a few seconds to think about what
-          you're saying and choose your words better. Those extra fractions of
-          seconds between words can make all the difference, and they even
-          stress the gravity of your words, encouraging others to hang on to
-          every word you say so you can hold their attention for a little
-          longer. Practice Makes Perfect Mastering the art of effective body
-          language isn't easy. It's a skill that will take time and deliberate
-          effort to perfect. But if you work at it consciously, you'll be able
-          to dominate any negotiation you find yourself in.
-        </p>
+      <div className="w-full max-w-screen-2xl px-6 mx-auto mt-2 leading-[1.5rem] max-sm:leading-[1.5rem] max-sm:text-sm">
+      <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara2}/>
       </div>
       </section>
     </>
