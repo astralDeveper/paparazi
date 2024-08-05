@@ -17,13 +17,74 @@ export default async function CaseStudiesPage() {
 
   return (
     <section className='max-w-screen-2xl mx-auto px-4 py-24'>
-      <h1 className='text-4xl font-semibold text-center'>{data.pageHeading}</h1>
+      {/* <h1 className='text-4xl font-semibold text-center'>{data.pageHeading}</h1>
       
       <p className='text-center mt-4'>{data.paragraph}</p>
 
       <div className='grid grid-cols-4 gap-6 mt-10 justify-items-center max-xl:grid-cols-2 max-sm:grid-cols-1'>
         {data.studies.map((item, index) => <Card key={index} types={item.heading} head={item.subHeading} para={item.description} image={item.image} />)}
-      </div>
+      </div> */}
+
+
+<h1 className=' text-5xl font-semibold text-start max-sm:text-3xl ' > From Underdog to Industry Leader </h1> 
+<p className='text-start mt-4 text-[#D2940A] mb-4  ' > A Case Study on The Entrepreneur's Guide to Power </p>
+
+
+<div className='bg-white px-32 py-4 max-sm:px-4 '>
+<h2 className='text-black text-lg max-sm:text-base'>Achieving life-long success in your chosen industry isn't something that happens overnight. It takes time, effort, and discipline. If you've ever felt like you lack the tools necessary to climb the corporate ladder, don't worry; you're not alone. Many people feel the same way, that's why they come to us. With our proven and tested leadership program, we help our clients unlock the brilliant leader and entrepreneur within by equipping them with skills they can use in the corporate world.
+In this case study, we'll show how our clients faced similar challenges, struggling to navigate the complexities of negotiation, marketing, and team leadership. However, through focused development and the right tools, they were able to unlock their full potential and propel their business to remarkable heights. Now, it's your turn to embark on that same transformation journey.</h2>
+</div>
+
+<div className='mt-28 grid grid-cols-2 gap-40 max-sm:grid-cols-1 max-sm:gap-10 max-sm:mt-10 ' >
+  <div className='' >
+    <h2 className='text-2xl max-sm:text-xl' >The Common Struggles</h2>
+    <p className='mt-4 text-base max-sm:text-sm'>After working with several clients across various industries, we have narrowed down a few key issues that most clients face. We have constructed a masterclass program that helps our clients overcome these issues so they can become successful leaders and entrepreneurs in their fields.</p>
+    <p className='text-base max-sm:text-sm' >The road to corporate success is paved with brilliant ideas and technical expertise, but for many people, the journey can hit a roadblock when it comes to translating those strengths into a thriving career. Negotiation skills, for instance, might be lacking, resulting in lopsided contracts that surrender control or potential profits.</p>
+    <p className='text-base max-sm:text-sm' >Often, people lack the communication skills necessary to excel in the corporate world. You may have brilliant ideas and solutions, but lacking effective communication skills can make it harder to share them with others and convince people around you that your way might be better.</p>
+    <p className='text-base max-sm:text-sm' >Finally, poor leadership skills can leave your career stagnant. You may never be given that promotion you've worked hard for because your higher-ups don't see you as a reliable leader. Poor leadership often has a direct and immediate impact on productivity and quality of work. </p>
+    <p className='text-base max-sm:text-sm' >That said, all of these problems can be overcome; let's discuss how.  </p>
+  </div>
+
+{/*  */}
+
+<div>
+  <h2 className='text-2xl max-sm:text-xl' > The Transformation </h2>
+  <p className='mt-4 text-base max-sm:text-sm' > By implementing these solutions, you can join the ranks of our many successful clients who have achieved truly remarkable results. Picture this: revenue surging exponentially, surpassing even your most ambitious projections. Your innovative products or services could be turning heads within the industry, garnering prestigious awards and featured placements in leading media outlets. But the success wouldn't stop there. By fostering a positive and collaborative work environment, you'll become a magnet for top talent, attracting the brightest minds in your field to join your growing enterprise. This isn't just a dream – it's the culmination of the strategies we can help you implement. </p>
+</div>
+
+
+</div>
+
+
+
+
+{/* second div 2 */}
+
+
+
+
+<div className='mt-28 grid grid-cols-2 gap-40 max-sm:grid-cols-1 max-sm:gap-10 max-sm:mt-10'>
+  <div className=''>
+    <h2 className='text-2xl max-sm:text-xl' >Our Solutions</h2>
+    <p className='mt-4 text-base max-sm:text-sm'>Our program equips entrepreneurs with the tools to overcome these hurdles:</p>
+<h3 className='font-bold mt-2'>Mastering Negotiation: </h3>We train you in techniques like BATNA (Best Alternative to a Negotiated Agreement) and develop your assertive communication skills. Through mock negotiations, you'll gain confidence in securing win-win deals with investors and partners.
+<h3 className='font-bold mt-2'>Delegation Strategies:</h3> We help you identify tasks that can be effectively delegated based on your team's strengths. You'll learn to set clear expectations, provide guidance, and monitor progress, empowering your team and freeing yourself to focus on strategic initiatives.
+<h3 className='font-bold mt-2'>Motivational Leadership: </h3> We train you to foster a positive and collaborative work environment. You'll learn to recognize achievements, provide opportunities for growth, and inspire your team to achieve their full potential.
+  </div>
+
+{/*  */}
+
+<div>
+  <h2 className='text-2xl max-sm:text-xl' >Policy and Advocacy</h2>
+  <p className='mt-4 text-base max-sm:text-sm' > This journey isn't just about the destination; it's about the transformative power of personal and professional growth for entrepreneurs like you. Sure, your technical skills are the foundation, the spark of innovation. But to translate those brilliant ideas into a flourishing business, you need a well-rounded skillset. That's where business acumen comes in – understanding marketing, finance, and negotiation becomes the bridge between your vision and a sustainable enterprise. It's about developing your voice, honing your assertiveness and communication skills to command respect, negotiate effectively, and inspire your team.
+ Remember, investing in yours0elf – through mentorship, courses, and continuous learning – is the fuel that propels success. Don't let a lack of leadership skills hold you back from achieving your entrepreneurial dreams. Our program equips you with the tools to navigate the complexities of business dynamics, build a high-performing team, and, ultimately, transform your innovations into a thriving enterprise. This isn't just about who you are now; it's about unlocking the powerhouse entrepreneur you have the potential to become. Let us guide you on that journey.</p>
+</div>
+
+
+</div>
+
+
+
     </section>
   )
 }
