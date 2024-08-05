@@ -48,6 +48,36 @@ export default defineType({
               title: "Category",
               type: "string",
             },
+            {
+              name: "DetailsTopHeading",
+              title: "Details Top Heading",
+              type: "string",
+            },
+            {
+              name: "DetailsTopPara",
+              title: "Details Top Para",
+              type: "string",
+            },
+            
+            {
+              name: "DetailsMainHeading",
+              title: "Details Main Heading",
+              type: "string",
+            },
+            
+            {
+              name: "DetailsMainPara1",
+              title: "Details Main Para1",
+              type: "array",
+              of: [{ type: "block" }],
+            },
+            
+            {
+              name: "DetailsMainPara2",
+              title: "Details Main Para2",
+              type: "array",
+              of: [{ type: "block" }],
+            },
           ],
         },
       ],
