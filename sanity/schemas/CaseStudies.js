@@ -14,13 +14,18 @@ export default defineType({
       type: 'string'
     }),
     defineField({
+      name: 'subHeading',
+      title: 'Sub Heading',
+      type: 'string'
+    }),
+    defineField({
       name: 'paragraph',
       title: 'Paragraph',
       type: 'string'
     }),
     defineField({
-      name: "studies",
-      title: "Studies",
+      name: "paragraphs",
+      title: "Paragraphs",
       type: "array",
       of: [
         {
@@ -28,24 +33,15 @@ export default defineType({
           title: "Case Study",
           fields: [
             {
-              name: "image",
-              type: "image",
-              title: "image",
-            },
-            {
-              name: "subHeading",
-              type: "string",
-              title: "Sub heading",
-            },
-            {
               name: "heading",
               type: "string",
               title: "Heading",
             },
             {
               name: "description",
-              type: "string",
-              title: "Description",
+              title:"description",
+              type: "array",
+            of: [{ type: "block" }],
             },
           ],
         },

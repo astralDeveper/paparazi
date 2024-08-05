@@ -23,6 +23,7 @@ import club from "@/sanity/schemas/Club";
 // import users from "@/sanity/schemas/Users";
 import footer from "@/sanity/schemas/Footer";
 import Terms from "./sanity/schemas/Terms";
+import Contact from "./sanity/schemas/Contact";
 
 export default defineConfig({
   basePath: studioUrl,
@@ -43,6 +44,7 @@ export default defineConfig({
       diplomaticDiaries,
       Terms,
       powerplayBlogs,
+      Contact,
       // quizResult,
       // users,
     ]
@@ -62,6 +64,7 @@ export default defineConfig({
       caseStudies,
       diplomaticDiaries,
       powerplayBlogs,
+      Contact,
     ])}),
     singletonPlugin([
       about.name,
