@@ -66,22 +66,22 @@ export default  function About() {
                 {aboutData.tabs[3]}
               </Tabs.Trigger>
               <Tabs.Trigger
-                className="border-[#ebebeb] border p-4 w-full bg-[#ffffff] transition-all text-[#12151a] text-start flex items-center gap-2 data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb]"
+                className="border-[#ebebeb] border p-4 w-full bg-[#ffffff] transition-all text-[#12151a] text-start flex items-center gap-2 data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb] rounded-b-xl"
                 value="our-mission"
               >
                 <RiRocket2Line className="text-sm" />
                 {aboutData.tabs[4]}
               </Tabs.Trigger>
-              <Tabs.Trigger
+              {/* <Tabs.Trigger
                 className="border-[#ebebeb] border p-4 w-full bg-[#ffffff] transition-all text-[#12151a] text-start flex items-center gap-2 data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb] rounded-b-xl"
                 value="policies-terms-and-codes"
               >
                 <RiShieldStarLine className="text-sm" />
                 {aboutData.tabs[5]}
-              </Tabs.Trigger>
+              </Tabs.Trigger> */}
             </Tabs.List>
           </div>
-          <div className="row-span-full col-start-2 max-xl:row-span-1 max-xl:col-start-1">
+          <div className="row-span-full col-start-2 xl:mr-24 max-xl:row-span-1 max-xl:col-start-1">
             <Tabs.Content value="about-paparazzi">
               <div>
                 <h2 className="text-3xl font-semibold">
@@ -125,9 +125,9 @@ export default  function About() {
             </Tabs.Content>
 
             {/* Policies and Code Tab */}
-            <Tabs.Content value="policies-terms-and-codes">
+            {/* <Tabs.Content value="policies-terms-and-codes">
               <PortableText value={aboutData.tab6} components={portabletextComponents} />
-            </Tabs.Content>
+            </Tabs.Content> */}
           </div>
 
           {/* <div className="bg-[#363636]  rounded-xl p-8">

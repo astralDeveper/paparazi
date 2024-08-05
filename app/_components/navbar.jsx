@@ -297,7 +297,7 @@ export default function Navbar() {
 
       <div
         style={{ top: topPosition, transition: "top 300ms ease-out" }}
-        className="fixed right-0 h-20 z-10"
+        className="fixed right-0 h-20 z-50"
       >
         <div className="border rounded-l-xl border-r-0 p-4 flex flex-col gap-8 py-6 bg-[#363636] max-md:p-2 max-md:py-4 hover:px-6 max-md:hover:px-4 transition-all">
           <a target="_blank" className="hover:scale-110 hover:text-yellow-500 transition-all" href={navbarData?.socialMediaLinks.linkedinLink}>

@@ -9,8 +9,8 @@ const Solutions = ({data}) => {
                </div>
                 <div className="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4">
                     {data.sec9card.map((item, i) => (
-                        <div key={i} className="p-4 md:w-1/3 sm:mb-0 mb-6">
-                          <div className="px-8 pt-8  w-full bg-white rounded-lg flex items-end">
+                        <div key={i} className="p-4 w-1/3 max-lg:w-full mb-6">
+                          <div className="px-8 pt-8 max-lg:pb-6 max-lg:px-6 max-lg:pt-6 justify-center bg-white rounded-lg flex items-end">
                                 <img alt="content" className="object-cover object-bottom " src={urlForImage(item).url()} />
                             </div>
                             <div className='px-10'>
