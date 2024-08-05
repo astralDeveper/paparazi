@@ -1,22 +1,31 @@
+'use client'
 import { client } from '@/sanity/lib/client'
 import { urlForImage } from '@/sanity/lib/utils';
 import { groq } from 'next-sanity';
+import { useEffect, useState } from 'react';
 
-export default async function PowerPlayBlogsPage() {
-  let data = null;
+export default function PowerPlayBlogsPage() {
+  const [data, setData] = useState(null);
 
-  try {
-    const blogsdata = await client.fetch(groq`*[_type == 'powerplayBlogs']{...}`, {}, {
-      next: { tags: ['powerplayBlogs']}
-    });
-    data = blogsdata[0]
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
 
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const blogsdata = await client.fetch(groq`*[_type == 'powerplayBlogs'][0]{...}`, {}, {
+          next: { tags: ['powerplayBlogs']}
+        });
+        setData(blogsdata);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+
+    }
+    
+    fetchData();
+  }, []);
+  
   if (!data) return null;
-
-
 
 
   return (
@@ -41,8 +50,8 @@ function Card(props) {
 
       <div className='p-4 pb-8'>
         <h5 className='text-[#D2940A] bg-[#d2930a35] text-sm w-fit p-1 px-2'>{props.category}</h5>
-        <h3 className='text-black font-semibold text-lg mt-4'>{props.title}</h3>
-        <p className='text-[#696969] text-xs mt-2'>{props.excerpt}</p>
+        <h3 className='text-black font-semibold text-lg mt-4'>{props.title.slice(0,25)}...</h3>
+        <p className='text-[#696969] text-xs mt-2'>{props.excerpt.slice(0, 120)}... <span className='font-bold'> Read more</span></p>
       </div>
     </article>
   );
