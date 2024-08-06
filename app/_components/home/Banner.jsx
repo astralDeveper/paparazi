@@ -24,13 +24,13 @@ export default function Banner({ data }) {
         {data.headerpara}
       </p>
 
-      <div className="mt-10 grid grid-cols-6 max-lg:grid-cols-3 max-sm:grid-cols-2 justify-center text-zinc-800 font-medium text-center text-lg max-sm:text-base gap-4">
-        <div className="p-8 w-full bg-white rounded-lg">
+      {/* <div className="mt-10 grid grid-cols-6 max-lg:grid-cols-3 max-sm:grid-cols-2 justify-center text-zinc-800 font-medium text-center text-lg max-sm:text-base gap-4"> */}
+        {/* <div className="p-8 w-full bg-white rounded-lg">
           <Image src={Icon1} width={80} height={80} className="mx-auto size-20 object-cover rounded-full" alt="card icon"/>
           <h2 className="mt-4 leading-tight">{data.headercards[0]}</h2>
-        </div>
+        </div> */}
 
-        <div className="p-8 w-full bg-white rounded-lg">
+        {/* <div className="p-8 w-full bg-white rounded-lg">
           <Image src={Icon2} width={80} height={80} className="mx-auto size-20 object-cover rounded-full" alt="card icon"/>
           <h2 className="mt-4 leading-tight">{data.headercards[1]}</h2>
         </div>
@@ -58,7 +58,7 @@ export default function Banner({ data }) {
 
           <h2 className="mt-4 leading-tight">{data.headercards[5]}</h2>
         </div>
-      </div>
+      </div> */}
 
       {/* <p className="mt-10 text-lg max-sm:text-base text-center max-w-screen-sm mx-auto">
         {data.headerpara}

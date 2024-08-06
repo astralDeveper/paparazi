@@ -31,7 +31,7 @@ export default function HomePage() {
   return (
     <div>
       <Banner data={home}/>
-      <Blogs data={home}/>
+      {/* <Blogs data={home}/>
       <Development data={home}/>
       <BussinessSection data={home}/>
       <SingersSection data={home}/>
@@ -39,7 +39,7 @@ export default function HomePage() {
       <StrategicIntelligence data={home}/>
       <AboutUs data={home}/>
       <Solutions data={home}/>
-      <SliderSection data={home}/>
+      <SliderSection data={home}/> */}
     </div>
   );
 }
