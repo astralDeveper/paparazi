@@ -11,6 +11,8 @@ import Solutions from '@/app/_components/home/Solutions'
 import SliderSection from '@/app/_components/home/SliderSection'
 import { client } from '@/sanity/lib/client'
 import { useEffect, useState } from 'react'
+import { urlForImage } from '@/sanity/lib/utils'
+import AdvantageSection from '../_components/home/AdvantageSection'
 
 export default function HomePage() {
   const [home , setHome] = useState(null)
@@ -29,10 +31,17 @@ export default function HomePage() {
   if (!home) return null;
 
   return (
-    <div>
+    <div className='pb-16'>
       <Banner data={home}/>
-      {/* <Blogs data={home}/>
-      <Development data={home}/>
+      <div className='max-w-screen-2xl mx-auto px-4 py-24 max-sm:py-16 flex flex-col gap-32 max-lg:px-6 max-lg:gap-24'>
+        {home.sec1.map((item, index )=>{
+          const isReverse = index % 2 !== 0;
+          return <div key={index}><Blogs head={item.cardheading} para={item.cardparagraph} image={urlForImage(item).url()} reverse={isReverse}/></div>
+        })}
+      </div>
+      <AdvantageSection head={home.lastheading} para={home.lastpara} smallPara={home.lastparaline}/>
+       
+      {/*<Development data={home}/>
       <BussinessSection data={home}/>
       <SingersSection data={home}/>
       <DevCards2 data={home}/>
