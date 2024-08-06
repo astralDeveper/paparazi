@@ -83,7 +83,7 @@ export default function Services() {
           <h2 className="text-2xl font-bold">{servicesData.feedbackTitle}</h2>
           <h3 className="font-semibold text-lg">{servicesData.feedbackSubTitle}</h3>
           <div>
-            <div className="grid grid-cols-3 gap-4 mt-8">
+            <div className="grid grid-cols-3 gap-4 mt-8 max-[800px]:grid-cols-1">
               {servicesData.feedback.map((item, index) => (
                 <CustomerCard
                   key={index}
@@ -101,14 +101,14 @@ export default function Services() {
         <p className="mt-4">{servicesData.custactUs2}</p>
       </div>
 
-      <div className="bg-black max-xl:p-12 pt-2 p-20 px-8 max-sm:p-8 text-white flex">
+      <div className="bg-black max-xl:p-12 pt-2 p-20 px-8 max-sm:p-8 text-white max-[800px]:flex-wrap flex">
         <div className="bg-white text-black p-4 w-full flex flex-col justify-between">
           <div>
             <h2 className="font-semibold text-2xl mb-4">{servicesData.book[0].booktitle}</h2>
             <p>{servicesData.book[0].bookdescription}</p>
           </div>
 
-          <div className="bg-[#363636] flex items-center text-white gap-4 p-4">
+          <div className="bg-[#363636] flex  items-center text-white gap-4 p-4">
             {/* <Image src={"https://" + servicesData.feedback[0].asset._ref} alt="check" width={30} height={30}/> */}
             <p className="text-sm">{servicesData.book[0].booksubtitle}</p>
           </div>
