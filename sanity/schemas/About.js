@@ -24,11 +24,6 @@ export default defineType({
       title: 'About Title',
     }),
     defineField({
-      name: 'subheading',
-      type: 'string',
-      title: 'Sub Heading',
-    }),
-    defineField({
       name: 'image',
       type: 'image',
       title: 'About image',
@@ -40,60 +35,28 @@ export default defineType({
     }),
     defineField({
       name: 'tab1',
-      title: 'About Paparazzi',
+      title: 'Shaping Legends & Success',
       type: "array",
       of: [{ type: "block" }],
     }),
     defineField({
       name: 'tab2',
-      title: 'About Our Institutional Framework',
+      title: 'Architects of Power',
       type: "array",
       of: [{ type: "block" }],
     }),
     defineField({
       name: 'tab3',
-      title: 'About Our History',
+      title: 'Our Vision ',
       type: "array",
       of: [{ type: "block" }],
     }),
     defineField({
       name: 'tab4',
-      title: 'About Our Leadership and Governance',
+      title: 'Our Core Values',
       type: "array",
       of: [{ type: "block" }],
     }),
-    defineField({
-      name: 'trustee',
-      title: 'Board of Trustee',
-      type: 'array',
-      of: [{
-        type: 'image',
-        title: 'Trustee',
-        fields: [
-          {
-            name: 'name',
-            type: 'string',
-            title: 'Name',
-          },
-          {
-            name: 'designation',
-            type: 'string',
-            title: 'Designation',
-          }
-        ]
-      }]
-    }),
-    defineField({
-      name: 'tab5',
-      title: 'About Our Mission',
-      type: "array",
-      of: [{ type: "block" }],
-    }),
-    defineField({
-      name: 'tab6',
-      title: 'Policies, Terms and Codes',
-      type: "array",
-      of: [{ type: "block" }],
-    }),
+   
   ],
 })

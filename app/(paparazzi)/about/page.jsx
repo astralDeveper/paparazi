@@ -22,10 +22,11 @@ export default  function About() {
         });
         setAboutData(about);
       
-    };
-
-    fetchAboutData();
-  }, [aboutData]);
+      };
+      
+      fetchAboutData();
+    }, []);
+    console.log(aboutData)
 
   if (!aboutData) return null;
 
@@ -33,23 +34,24 @@ export default  function About() {
     <>
       <section className="max-w-screen-2xl mx-auto min-h-screen px-4 py-24">
         <Tabs.Root
-          className="grid grid-cols-[25%_auto] grid-rows-[auto_1fr] gap-16 items-start max-xl:grid-cols-1"
-          defaultValue="about-paparazzi"
+          className="grid grid-cols-[25%_auto] grid-rows-[auto_1fr] gap-16 items-start max-xl:grid-cols-1 disabled:" defaultValue="shaping"
+       
         >
           <div className="">
             <Tabs.List className="flex flex-col items-start">
               <Tabs.Trigger
-                className="p-4 w-full font-semibold text-2xl bg-[#ffffff] transition-all text-[#12151a] text-start rounded-t-xl data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb]"
-                value="about-paparazzi"
+                className="p-4 w-full font-semibold text-2xl  bg-[#ffffff] transition-all text-[#12151a] text-start rounded-t-xl data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb]"
+                // value="about-paparazzi"
+                disabled
               >
-                {aboutData.tabs[0]}
+                {aboutData.tabs[1]}
               </Tabs.Trigger>
               <Tabs.Trigger
-                className="border-[#ebebeb] border p-4 w-full bg-[#ffffff] transition-all text-[#12151a] text-start flex items-center gap-2 data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb]"
-                value="our-institutional-framework"
+                className="border-[#ebebeb] border p-4 w-full bg-[#ffffff]  transition-all text-[#12151a] text-start flex items-center gap-2 data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb]"
+                     value="shaping" 
               >
                 <RiHome5Line className="text-sm" />
-                {aboutData.tabs[1]}
+                {aboutData.tabs[0]}
               </Tabs.Trigger>
               <Tabs.Trigger
                 className="border-[#ebebeb] border p-4 w-full bg-[#ffffff] transition-all text-[#12151a] text-start flex items-center gap-2 data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb]"
@@ -82,7 +84,7 @@ export default  function About() {
             </Tabs.List>
           </div>
           <div className="row-span-full col-start-2 xl:mr-24 max-xl:row-span-1 max-xl:col-start-1">
-            <Tabs.Content value="about-paparazzi">
+            {/* <Tabs.Content value="about-paparazzi">
               <div>
                 <h2 className="text-3xl font-semibold">
                   {aboutData?.title}
@@ -102,26 +104,47 @@ export default  function About() {
 
                 <PortableText value={aboutData.tab1} components={portabletextComponents} />
               </div>
-            </Tabs.Content>
+            </Tabs.Content> */}
             
-            {/* Our institutional framework Tab */}
-            <Tabs.Content value="our-institutional-framework">
+
+
+            {/* History Tab */}
+            <Tabs.Content value="shaping">
+            <div>
+                <h2 className="text-3xl font-semibold">
+                  {aboutData?.title}
+                </h2>
+                <h3 className="font-semibold text-2xl text-[#CECECE] mt-4">
+                  {aboutData?.subheading}
+                </h3>
+                <div className="grid grid-cols-[40%_auto] max-xl:grid-cols-1 justify-start items-start mt-6 gap-6 ">
+                  <img className="max-xl:w-full" src={urlForImage(aboutData?.image).url()} alt="old" />
+                  <div>
+                    <p>{aboutData?.Paragraph}</p>
+                    <button className="bg-[#D2940A] hover:bg-[#b98d2d] transition-all p-4 rounded-lg text-sm font-semibold px-10 mt-6">
+                      View All
+                    </button>
+                  </div>
+                </div>
+
+              <PortableText value={aboutData.tab1} components={portabletextComponents} />
+              </div>
+            </Tabs.Content>
+
+            {/* History Tab */}
+            <Tabs.Content value="history">
               <PortableText value={aboutData.tab2} components={portabletextComponents} />
             </Tabs.Content>
             
-            {/* History Tab */}
-            <Tabs.Content value="history">
-              <PortableText value={aboutData.tab3} components={portabletextComponents} />
-            </Tabs.Content>
             
             {/* Leadership And Governance Tab */}
             <Tabs.Content value="leadership-and-governance">
-              <PortableText value={aboutData.tab4} components={portabletextComponents} />
+              <PortableText value={aboutData.tab3} components={portabletextComponents} />
             </Tabs.Content>
             
             {/* Our Mission Tab */}
             <Tabs.Content value="our-mission">
-              <PortableText value={aboutData.tab5} components={portabletextComponents} />
+              <PortableText value={aboutData.tab4} components={portabletextComponents} />
             </Tabs.Content>
 
             {/* Policies and Code Tab */}
@@ -169,7 +192,8 @@ const AboutCards = (props) => {
 
 const portabletextComponents = {
   block: { 
-    h2: ({children}) => <h2 className="text-3xl font-semibold mb-6 [&:not(:first-of-type)]:mt-8">{children}</h2>,
+    h2: ({children}) => <h2 className="text-2xl font-semibold mb-6 text-[#D2940A] [&:not(:first-of-type)]:mt-8">{children}</h2>,
+    h1: ({children}) => <h1 className="text-4xl font-semibold mb-6  [&:not(:first-of-type)]:mt-8">{children}</h1>,
     normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4">{children}</p>
   } 
 }

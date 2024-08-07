@@ -8,6 +8,16 @@ import { groq, PortableText } from "next-sanity";
 import { useParams } from "next/navigation";
 import { urlForImage } from "@/sanity/lib/utils";
 import { RiArrowLeftLine } from "@remixicon/react";
+
+
+
+
+
+
+
+
+
+
 const Page = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -58,10 +68,10 @@ const Page = () => {
     <>
     <section className="pb-20">
       <div className="w-full max-w-screen-2xl px-6  mx-auto">
-         <a href='/diplomatic-diaries' className=' flex items-center gap-1 group my-16 font-semibold w-fit text-[#D2940A]'><RiArrowLeftLine className='group-hover:-translate-x-2 transition-all'/> Back</a>
+         <a href='/powerplay-blogs' className=' flex items-center gap-1 group my-16 max-sm:my-8 font-semibold w-fit text-[#D2940A]'><RiArrowLeftLine className='group-hover:-translate-x-2 transition-all'/> Back</a>
       </div>
       <div className="w-[60%] max-md:w-[80%] mx-auto mt-10">
-        <h1 className="text-center text-3xl max-sm:text-2xl font-semibold">
+        <h1 className="text-center text-3xl max-sm:text-2xl font-semibold text-[#D2940A]">
           {value.DetailsTopHeading}
         </h1>
         <p className="text-center mt-16 max-sm:text-sm">
@@ -70,15 +80,17 @@ const Page = () => {
       </div>
 
       <div className="w-full max-w-screen-2xl px-6  mx-auto mt-10 ">
-        <h2 className="text-2xl font-semibold max-sm:text-2xl w-full">
+        <h2 className="text-2xl font-semibold max-sm:text-2xl w-full text-[#D2940A]">
           {value.DetailsMainHeading}
         </h2>
-        <div className="flex max-lg:flex-col max-lg:items-center mt-10 gap-4 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
-          <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara1}/>
+        <div className="grid grid-cols-2 max-lg:grid-cols-1 mt-10 gap-4 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
+          <div className="">
+             <PortableText className=" max-sm:text-sm w-20" value={value.DetailsMainPara1} components={portabletextComponents}/>
+          </div>
            
           
           <img
-            className="w-[600px] h-fit max-md:w-full grayscale mb-2"
+            className="w-full h-fit max-md:w-full grayscale mb-2"
             src={urlForImage(value.image).url()}
             alt="Course Image"
           />
@@ -86,7 +98,7 @@ const Page = () => {
       </div>
 
       <div className="w-full max-w-screen-2xl px-6 mx-auto mt-2 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
-      <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara2}/>
+      <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara2} components={portabletextComponents}/>
       </div>
       </section>
     </>
@@ -94,3 +106,11 @@ const Page = () => {
 };
 
 export default Page;
+
+const portabletextComponents = {
+  block: { 
+    h5: ({children}) => <h2 className="text-xl font-semibold mb-6 inline text-[#D2940A] [&:not(:first-of-type)]:mt-8">{children}</h2>,
+    h1: ({children}) => <h1 className="text-4xl font-semibold mb-6  [&:not(:first-of-type)]:mt-8">{children}</h1>,
+    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4">{children}</p>
+  } 
+}

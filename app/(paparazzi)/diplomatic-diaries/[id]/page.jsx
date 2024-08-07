@@ -57,7 +57,7 @@ export default function Details() {
   
 
   return (
-    <div className=' max-w-screen-2xl px-4 mx-auto'>
+    <div className=' max-w-screen-2xl px-4 mx-auto pb-4'>
       <a href='/diplomatic-diaries' className=' flex items-center gap-1 group my-16 font-semibold w-fit text-[#D2940A]'><RiArrowLeftLine className='group-hover:-translate-x-2 transition-all'/> Back</a>
       <div>
         <div className='flex flex-col w-fit'>
@@ -68,7 +68,7 @@ export default function Details() {
           <p  className='my-8'>{value.description}</p>
         </div>
       </div>
-      <div className='bg-white text-black mt-4 p-4 rounded-md'>
+      <div className='bg-white text-black mt-4 p-4 rounded-md leading-[2rem]'>
         <PortableText value={value.description2} components={serializers} />
       </div>
     </div>
