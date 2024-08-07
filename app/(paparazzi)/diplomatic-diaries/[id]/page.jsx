@@ -5,6 +5,7 @@ import { groq } from 'next-sanity';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { PortableText } from '@portabletext/react';
+import { RiArrowLeftLine } from '@remixicon/react';
 
 // Define the serializers for PortableText if needed
 const serializers = {
@@ -56,7 +57,8 @@ export default function Details() {
   
 
   return (
-    <div className='py-24 max-w-screen-2xl px-4 mx-auto'>
+    <div className=' max-w-screen-2xl px-4 mx-auto'>
+      <a href='/diplomatic-diaries' className=' flex items-center gap-1 group my-16 font-semibold w-fit text-[#D2940A]'><RiArrowLeftLine className='group-hover:-translate-x-2 transition-all'/> Back</a>
       <div>
         <div className='flex flex-col w-fit'>
           <h1 className='text-end'>({value.heading})</h1>

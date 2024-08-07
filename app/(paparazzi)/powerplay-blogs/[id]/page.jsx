@@ -7,6 +7,7 @@ import { client } from "@/sanity/lib/client";
 import { groq, PortableText } from "next-sanity";
 import { useParams } from "next/navigation";
 import { urlForImage } from "@/sanity/lib/utils";
+import { RiArrowLeftLine } from "@remixicon/react";
 const Page = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -56,6 +57,9 @@ const Page = () => {
   return (
     <>
     <section className="pb-20">
+      <div className="w-full max-w-screen-2xl px-6  mx-auto">
+         <a href='/diplomatic-diaries' className=' flex items-center gap-1 group my-16 font-semibold w-fit text-[#D2940A]'><RiArrowLeftLine className='group-hover:-translate-x-2 transition-all'/> Back</a>
+      </div>
       <div className="w-[60%] max-md:w-[80%] mx-auto mt-10">
         <h1 className="text-center text-3xl max-sm:text-2xl font-semibold">
           {value.DetailsTopHeading}
@@ -69,7 +73,7 @@ const Page = () => {
         <h2 className="text-2xl font-semibold max-sm:text-2xl w-full">
           {value.DetailsMainHeading}
         </h2>
-        <div className="flex max-lg:flex-col max-lg:items-center mt-10 gap-4 leading-[1.5rem] max-sm:leading-[1.5rem] max-sm:text-sm">
+        <div className="flex max-lg:flex-col max-lg:items-center mt-10 gap-4 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
           <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara1}/>
            
           
@@ -81,7 +85,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-screen-2xl px-6 mx-auto mt-2 leading-[1.5rem] max-sm:leading-[1.5rem] max-sm:text-sm">
+      <div className="w-full max-w-screen-2xl px-6 mx-auto mt-2 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
       <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara2}/>
       </div>
       </section>
