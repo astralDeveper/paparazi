@@ -18,7 +18,7 @@ const AdvantageSection = (props) => {
             <h2 className="text-4xl font-semibold max-md:text-3xl max-sm:text-xl max-sm:px-8">
               {props.head}
             </h2>
-            <p className="my-8 text-2xl max-md:text-xl max-sm:text-sm">
+            <p className="my-8 text-2xl max-md:text-xl max-sm:text-sm ">
               {props.para}
             </p>
             <p className="text-[#D2940A] text-2xl max-md:text-xl max-sm:text-sm">

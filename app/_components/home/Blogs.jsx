@@ -32,8 +32,10 @@ export default function Blogs(props) {
         <div className={`flex items-center justify-center max-lg:flex-wrap gap-20 max-sm:gap-6 ${props.reverse ? 'flex-row-reverse' : ''}`}>
          <div className="flex flex-col">
             <h2 className="text-4xl mb-8 max-sm:mb-2 max-lg:mb-4 max-sm:text-3xl font-semibold">{props.head}</h2>
+            <div className="w-[95%]"> 
+              <PortableText value={props.para} />
 
-              <PortableText value={props.para}/>
+            </div>
              
          </div>
 
