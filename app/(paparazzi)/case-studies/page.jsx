@@ -30,7 +30,7 @@ export default function CaseStudiesPage() {
     <>
    
     <section className="max-w-screen-2xl my-20 max-md:my-6 p-14 max-md:p-6 max-2xl:mx-4 bg-black mx-auto">
-      <div className="">
+      <div className="max-md:w-[96%] max-2xl:w-[90%]">
         <h1 className=" text-5xl  font-semibold text-start max-sm:text-3xl ">
           {" "}
           {caseData.pageHeading}{" "}
@@ -41,7 +41,7 @@ export default function CaseStudiesPage() {
         </p>
       </div>
 
-      <div className="leading-[1.5rem]">
+      <div className="leading-[1.5rem] max-md:w-[96%] max-2xl:w-[90%] ">
       <PortableText value={caseData.caseStudies1} components={portabletextComponents}/>
       </div>
 
@@ -86,7 +86,7 @@ const portabletextComponents = {
   block: { 
     h4: ({children}) => <h2 className="text-xl font-semibold mb-6 inline text-[#D2940A] [&:not(:first-of-type)]:mt-8">{children}</h2>,
     h1: ({children}) => <h1 className="text-4xl font-semibold mb-6  [&:not(:first-of-type)]:mt-8">{children}</h1>,
-    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4">{children}</p>
+    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4 text-justify ">{children}</p>
   } 
 }
 

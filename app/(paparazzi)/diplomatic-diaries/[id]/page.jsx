@@ -14,6 +14,10 @@ const serializers = {
   },
   marks: {
     // Define serializers for different marks if needed
+  },
+  block:{
+
+    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4 text-justify max-md:w-[96%] max-2xl:w-[90%] w-[95%]">{children}</p>
   }
 };
 
@@ -62,13 +66,13 @@ export default function Details() {
       <div>
         <div className='flex flex-col w-fit'>
           <h1 className='text-end'>({value.heading})</h1>
-          <p className='text-3xl font-semibold border-b-2 border-[#D2940A] pb-2 max-sm:text-2xl transition-all'>{value.Heading2}</p>
+          <p className='text-3xl font-semibold border-b-2 border-[#D2940A] pb-2 max-sm:text-2xl transition-all '>{value.Heading2}</p>
         </div>
         <div>
-          <p  className='my-8'>{value.description}</p>
+          <p  className='my-8 max-md:w-[96%] max-2xl:w-[90%] w-[90%]'>{value.description}</p>
         </div>
       </div>
-      <div className='bg-white text-black mt-4 p-4 rounded-md leading-[2rem]'>
+      <div className='bg-white text-black mt-4 p-4 rounded-md leading-[2rem] '>
         <PortableText value={value.description2} components={serializers} />
       </div>
     </div>

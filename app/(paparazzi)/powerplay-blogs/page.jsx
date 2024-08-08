@@ -32,7 +32,7 @@ export default function PowerPlayBlogsPage() {
     <section className='max-w-screen-2xl mx-auto px-6 py-24'>
       <h1 className='text-4xl font-semibold text-center'>{data.pageHeading}</h1>
 
-      <p className='text-center mt-4'>{data.paragraph}</p>
+      <p className='text-center mt-4 max-md:w-[96%] max-2xl:w-[90%] w-[90%]'>{data.paragraph}</p>
 
       <div className='mt-10 grid grid-cols-4 gap-10 justify-center max-xl:grid-cols-2 max-sm:grid-cols-1 justify-items-center max-md:gap-6'>
         {data ? data.blogs.map((item, index) => <a key={index} href={`/powerplay-blogs/${index}`}> <Card key={index} image={item.image} title={item.title} excerpt={item.excerpt} category={item.category} /></a>) : <div></div>}
@@ -49,7 +49,7 @@ function Card(props) {
       </div>
 
       <div className='p-4 pb-8'>
-        <h5 className='text-[#D2940A] bg-[#d2930a35] text-sm w-fit p-1 px-2'>{props.category}</h5>
+        <h5 className='text-[#D2940A] bg-[#d2930a35] text-sm w-fit p-1 px-2 '>{props.category}</h5>
         <h3 className='text-black font-semibold text-lg mt-4'>{props.title.slice(0,25)}...</h3>
         <p className='text-[#696969] text-xs mt-2'>{props.excerpt.slice(0, 120)}... <span className='font-bold'> Read more</span></p>
       </div>
