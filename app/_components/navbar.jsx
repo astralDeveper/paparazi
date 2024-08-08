@@ -151,7 +151,7 @@ export default function Navbar() {
               <Link
                 onClick={toggleMenu}
                 href="/case-studies"
-                className={`after:block after:w-0 hover:after:w-full after:transition-all after:h-0.5 after:bg-yellow-500 [&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/case-studies" ? "active" : ""}`}
+                className={`after:block after:w-0 hover:after:w-full after:transition-all after:h-0.5 after:bg-yellow-500 [&.active]:text-yellow-500 [&.active]:border-b-2 [&.active]:border-yellow-500 ${pathname === "/case-studies" ? "active" : ""} ${pathname === "/case-studies2" ? "active" : ""}`}
               >
                 Case Studies
               </Link>

@@ -5,7 +5,7 @@ import { RiArrowLeftLine, RiArrowRightLine } from "@remixicon/react";
 import { groq, PortableText } from "next-sanity";
 import { useEffect, useState } from "react";
 
-export default function CaseStudiesPage() {
+export default function CaseStudies2() {
   const [caseData, setCaseData] = useState(null);
   useEffect(() => {
     const fetchCaseData = async () => {
@@ -33,16 +33,16 @@ export default function CaseStudiesPage() {
       <div className="">
         <h1 className=" text-5xl  font-semibold text-start max-sm:text-3xl ">
           {" "}
-          {caseData.pageHeading}{" "}
+          {caseData.pageHeading2}{" "}
         </h1>
         <p className="text-start mt-4 text-[#D2940A] mb-4  text-2xl italic font-semibold">
           {" "}
-          {caseData.subHeading}{" "}
+          {caseData.subHeading2}{" "}
         </p>
       </div>
 
       <div className="leading-[1.5rem]">
-      <PortableText value={caseData.caseStudies1} components={portabletextComponents}/>
+      <PortableText value={caseData.caseStudies2} components={portabletextComponents}/>
       </div>
 
       
@@ -75,8 +75,8 @@ export default function CaseStudiesPage() {
 
     </section>
         <div className=" flex items-center justify-between max-w-screen-2xl mx-auto mb-8">
-          <a className="text-2xl border-2 p-2 px-6 flex items-center gap-2 border-[#d2930a7a] rounded-xl text-gray-600 cursor-auto"><RiArrowLeftLine className=""/> Back</a>
-          <a href="/case-studies2" className="text-2xl border-2 p-2 px-6 flex items-center gap-2 border-[#D2940A] rounded-xl group transition-all">Next <RiArrowRightLine className="group-hover:translate-x-2 transition-all"/></a>
+          <a href="/case-studies" className="text-2xl border-2 p-2 px-6 flex items-center gap-2 border-[#D2940A] rounded-xl group transition-all"><RiArrowLeftLine className="group-hover:-translate-x-2 transition-all"/> Back</a>
+          <a className="  text-2xl border-2 p-2 px-6 flex items-center gap-2 border-[#d2930a7a] rounded-xl text-gray-600 cursor-auto">Next <RiArrowRightLine className=""/></a>
         </div>
   </>
   );

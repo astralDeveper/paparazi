@@ -19,33 +19,26 @@ export default defineType({
       type: 'string'
     }),
     defineField({
-      name: 'paragraph',
-      title: 'Paragraph',
+      name: "caseStudies1",
+      title:"Case Studeis 1",
+      type: "array",
+      of: [{ type: "block" }],
+    }),
+    defineField({
+      name: 'pageHeading2',
+      title: 'Page heading2',
       type: 'string'
     }),
     defineField({
-      name: "paragraphs",
-      title: "Paragraphs",
+      name: 'subHeading2',
+      title: 'Sub Heading2',
+      type: 'string'
+    }),
+    defineField({
+      name: "caseStudies2",
+      title:"Case Studeis 2",
       type: "array",
-      of: [
-        {
-          type: "object",
-          title: "Case Study",
-          fields: [
-            {
-              name: "heading",
-              type: "string",
-              title: "Heading",
-            },
-            {
-              name: "description",
-              title:"description",
-              type: "array",
-            of: [{ type: "block" }],
-            },
-          ],
-        },
-      ],
+      of: [{ type: "block" }],
     }),
   ],
 });
