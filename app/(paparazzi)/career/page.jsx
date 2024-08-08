@@ -28,8 +28,8 @@ export default function Career() {
   return (
     <div>
       <Section1 careersData={careerData} />
-      <Section2 careersData={careerData} />
-      <Section3 careersData={careerData} />
+      {/* <Section2 careersData={careerData} /> */}
+      {/* <Section3 careersData={careerData} /> */}
       {/* <Section4 careersData={careerData} /> */}
     </div>
   );
