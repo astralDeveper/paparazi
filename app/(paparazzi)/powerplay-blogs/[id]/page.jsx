@@ -84,7 +84,7 @@ const Page = () => {
           {value.DetailsMainHeading}
         </h2>
         <div className="grid grid-cols-2 max-lg:grid-cols-1 mt-10 gap-4 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
-          <div className="">
+          <div className="w-[95%]">
              <PortableText className=" max-sm:text-sm w-20" value={value.DetailsMainPara1} components={portabletextComponents}/>
           </div>
            
@@ -97,8 +97,8 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-screen-2xl px-6 mx-auto mt-2 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
-      <PortableText className=" max-sm:text-sm w-full " value={value.DetailsMainPara2} components={portabletextComponents}/>
+      <div className="w-[90%]  max-w-screen-2xl px-6  mt-2 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
+      <PortableText className=" max-sm:text-sm " value={value.DetailsMainPara2} components={portabletextComponents}/>
       </div>
       </section>
     </>
@@ -111,6 +111,6 @@ const portabletextComponents = {
   block: { 
     h5: ({children}) => <h2 className="text-xl font-semibold mb-6 inline text-[#D2940A] [&:not(:first-of-type)]:mt-8">{children}</h2>,
     h1: ({children}) => <h1 className="text-4xl font-semibold mb-6  [&:not(:first-of-type)]:mt-8">{children}</h1>,
-    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4">{children}</p>
+    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4 max-md:w-[96%] max-2xl:w-[90%] text-justify">{children}</p>
   } 
 }

@@ -43,13 +43,13 @@ export default function SocialClubPage() {
         </div>
 
         <div className="mb-4">
-          <p className="leading-[1.7rem]">
+          <p className="leading-[1.7rem] max-md:w-[96%] max-2xl:w-[90%] w-full text-justify">
             {clubData.paragraph2}
           </p>
 
           
         </div>
-        <div className="leading-[1.7rem]">
+        <div className="leading-[1.7rem] max-md:w-[96%] max-2xl:w-[90%] w-full  text-justify">
           <PortableText value={clubData.description} components={portabletextComponents}/>
         </div>
       </div>
