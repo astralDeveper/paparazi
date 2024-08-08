@@ -29,7 +29,7 @@ export default function CaseStudiesPage() {
   return (
     <>
    
-    <section className="max-w-screen-2xl my-20 p-14 max-md:p-6 max-2xl:mx-4 bg-black mx-auto">
+    <section className="max-w-screen-2xl my-20 max-md:my-6 p-14 max-md:p-6 max-2xl:mx-4 bg-black mx-auto">
       <div className="">
         <h1 className=" text-5xl  font-semibold text-start max-sm:text-3xl ">
           {" "}
@@ -74,7 +74,7 @@ export default function CaseStudiesPage() {
 
 
     </section>
-        <div className=" flex items-center justify-between max-w-screen-2xl mx-auto mb-8">
+        <div className=" flex items-center justify-between max-w-screen-2xl mx-auto mb-8 px-4">
           <a className="text-2xl border-2 p-2 px-6 flex items-center gap-2 border-[#d2930a7a] rounded-xl text-gray-600 cursor-auto"><RiArrowLeftLine className=""/> Back</a>
           <a href="/case-studies2" className="text-2xl border-2 p-2 px-6 flex items-center gap-2 border-[#D2940A] rounded-xl group transition-all">Next <RiArrowRightLine className="group-hover:translate-x-2 transition-all"/></a>
         </div>

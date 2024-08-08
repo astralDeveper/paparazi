@@ -33,8 +33,8 @@ export default function SocialClubPage() {
   if (!clubData) return null;
 
   return (
-    <section className="p-24 py-10 max-w-screen-2xl mx-auto max-xl:p-10 max-sm:p-5">
-      <div className="bg-black max-xl:p-12 p-20 max-sm:p-8">
+    <section className="p-24 py-10 max-w-screen-2xl mx-auto max-xl:p-10 max-sm:p-4">
+      <div className="bg-black max-xl:p-12 p-20 max-sm:p-6">
         <div className="max-w-screen-lg">
           <h1 className="text-3xl font-bold leading-[45px] max-sm:text-xl mb-4">
             {clubData.title}
