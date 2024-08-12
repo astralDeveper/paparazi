@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   RiHistoryLine,
   RiHome5Line,
@@ -7,26 +7,29 @@ import {
   RiShieldStarLine,
 } from "@remixicon/react";
 import * as Tabs from "@radix-ui/react-tabs";
-import { PortableText } from '@portabletext/react'
+import { PortableText } from "@portabletext/react";
 import { urlForImage } from "@/sanity/lib/utils";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import { useEffect, useState } from "react";
 
-export default  function About() {
+export default function About() {
   const [aboutData, setAboutData] = useState(null);
   useEffect(() => {
     const fetchAboutData = async () => {
-        const about = await client.fetch(groq`*[_type == 'About'][0]{...}`, {}, {
-          next: { tags: ['About'] },
-        });
-        setAboutData(about);
-      
-      };
-      
-      fetchAboutData();
-    }, []);
-    console.log(aboutData)
+      const about = await client.fetch(
+        groq`*[_type == 'About'][0]{...}`,
+        {},
+        {
+          next: { tags: ["About"] },
+        }
+      );
+      setAboutData(about);
+    };
+
+    fetchAboutData();
+  }, []);
+  console.log(aboutData);
 
   if (!aboutData) return null;
 
@@ -34,8 +37,8 @@ export default  function About() {
     <>
       <section className="max-w-screen-2xl mx-auto min-h-screen px-4 py-24">
         <Tabs.Root
-          className="grid grid-cols-[25%_auto] grid-rows-[auto_1fr] gap-16 items-start max-xl:grid-cols-1 disabled:" defaultValue="shaping"
-       
+          className="grid grid-cols-[25%_auto] grid-rows-[auto_1fr] gap-16 items-start max-xl:grid-cols-1 disabled:"
+          defaultValue="shaping"
         >
           <div className="">
             <Tabs.List className="flex flex-col items-start">
@@ -48,7 +51,7 @@ export default  function About() {
               </Tabs.Trigger>
               <Tabs.Trigger
                 className="border-[#ebebeb] border p-4 w-full bg-[#ffffff]  transition-all text-[#12151a] text-start flex items-center gap-2 data-[state=active]:bg-[#363636] data-[state=active]:text-[#ebebeb]"
-                     value="shaping" 
+                value="shaping"
               >
                 <RiHome5Line className="text-sm" />
                 {aboutData.tabs[0]}
@@ -105,20 +108,20 @@ export default  function About() {
                 <PortableText value={aboutData.tab1} components={portabletextComponents} />
               </div>
             </Tabs.Content> */}
-            
-
 
             {/* History Tab */}
             <Tabs.Content value="shaping">
-            <div>
-                <h2 className="text-3xl font-semibold">
-                  {aboutData?.title}
-                </h2>
+              <div>
+                <h2 className="text-3xl font-semibold">{aboutData?.title}</h2>
                 <h3 className="font-semibold text-2xl text-[#CECECE] mt-4">
                   {aboutData?.subheading}
                 </h3>
                 <div className="grid grid-cols-[40%_auto] max-xl:grid-cols-1 justify-start items-start mt-6 gap-6 ">
-                  <img className="max-xl:w-full" src={urlForImage(aboutData?.image).url()} alt="old" />
+                  <img
+                    className="max-xl:w-full"
+                    src={urlForImage(aboutData?.image)?.url()}
+                    alt="old"
+                  />
                   <div>
                     <p>{aboutData?.Paragraph}</p>
                     <button className="bg-[#D2940A] hover:bg-[#b98d2d] transition-all p-4 rounded-lg text-sm font-semibold px-10 mt-6">
@@ -127,24 +130,35 @@ export default  function About() {
                   </div>
                 </div>
 
-              <PortableText value={aboutData.tab1} components={portabletextComponents} />
+                <PortableText
+                  value={aboutData.tab1}
+                  components={portabletextComponents}
+                />
               </div>
             </Tabs.Content>
 
             {/* History Tab */}
             <Tabs.Content value="history">
-              <PortableText value={aboutData.tab2} components={portabletextComponents} />
+              <PortableText
+                value={aboutData.tab2}
+                components={portabletextComponents}
+              />
             </Tabs.Content>
-            
-            
+
             {/* Leadership And Governance Tab */}
             <Tabs.Content value="leadership-and-governance">
-              <PortableText value={aboutData.tab3} components={portabletextComponents} />
+              <PortableText
+                value={aboutData.tab3}
+                components={portabletextComponents}
+              />
             </Tabs.Content>
-            
+
             {/* Our Mission Tab */}
             <Tabs.Content value="our-mission">
-              <PortableText value={aboutData.tab4} components={portabletextComponents} />
+              <PortableText
+                value={aboutData.tab4}
+                components={portabletextComponents}
+              />
             </Tabs.Content>
 
             {/* Policies and Code Tab */}
@@ -175,25 +189,38 @@ export default  function About() {
       </section>
     </>
   );
-};
+}
 
 const AboutCards = (props) => {
   return (
-    <div className='flex items-center gap-4'>
-      <img src={urlForImage(props.Image).url()} alt="about-cards" className='w-28' />
+    <div className="flex items-center gap-4">
+      <img
+        src={urlForImage(props.Image).url()}
+        alt="about-cards"
+        className="w-28"
+      />
       <div>
-        <h2 className='text-2xl font-semibold mb-2'>{props.Name}</h2>
+        <h2 className="text-2xl font-semibold mb-2">{props.Name}</h2>
         <p>{props.Designation}</p>
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 const portabletextComponents = {
-  block: { 
-    h2: ({children}) => <h2 className="text-2xl font-semibold mb-6 text-[#D2940A] [&:not(:first-of-type)]:mt-8">{children}</h2>,
-    h1: ({children}) => <h1 className="text-4xl font-semibold mb-6  [&:not(:first-of-type)]:mt-8">{children}</h1>,
-    normal: ({children}) => <p className="[&:not(:first-of-type)]:mt-4">{children}</p>
-  } 
-}
+  block: {
+    h2: ({ children }) => (
+      <h2 className="text-2xl font-semibold mb-6 text-[#D2940A] [&:not(:first-of-type)]:mt-8">
+        {children}
+      </h2>
+    ),
+    h1: ({ children }) => (
+      <h1 className="text-4xl font-semibold mb-6  [&:not(:first-of-type)]:mt-8">
+        {children}
+      </h1>
+    ),
+    normal: ({ children }) => (
+      <p className="[&:not(:first-of-type)]:mt-4">{children}</p>
+    ),
+  },
+};

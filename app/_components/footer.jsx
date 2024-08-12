@@ -14,7 +14,6 @@ export default function Footer() {
 
   if (!footerData) return null;
   // console.log(footerData);
-  
 
   return (
     <div>
@@ -26,7 +25,9 @@ export default function Footer() {
                 <img src="/paparazzi-logo.png" alt="" />
               </div>
               <div>
-                <h1 className="text-3xl text-white font-semibold">Paparazzi</h1>
+                <h1 className="text-3xl text-white font-semibold">
+                  Paparazzi House
+                </h1>
               </div>
             </div>
             {/* <ul className="flex items-center gap-4 h-[23px] justify-end max-sm:justify-center">

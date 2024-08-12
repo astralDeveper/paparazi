@@ -1,18 +1,13 @@
 "use client";
 
-import React, { Suspense, useRef, useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { Suspense, useRef } from "react";
+import { sendPasswordResetEmail } from "firebase/auth";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { auth } from "../../config/firebaseConfig";
+import { auth } from "@/app/config/firebaseConfig";
 
-const Login = () => {
+const ForgetPassword = () => {
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const [showPassword, setShowPassword] = useState(false);
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState);
-  };
 
   return (
     <div className="min-h-screen px-4 flex flex-col py-16">
@@ -23,11 +18,11 @@ const Login = () => {
       />
 
       <h2 className="mt-20 text-center text-3xl max-sm:text-2xl max-sm:font-medium font-semibold">
-        Log in to your account
+        Forget your account Password
       </h2>
       <div className="mt-8 bg-[#252525] shadow p-8 max-md:p-4 rounded-lg max-w-md mx-auto w-full">
         <Suspense>
-          <Form emailRef={emailRef} passwordRef={passwordRef}>
+          <Form emailRef={emailRef}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium">
                 Email address
@@ -46,37 +41,9 @@ const Login = () => {
               </div>
             </div>
 
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium">
-                Password
-              </label>
-              <div className="relative mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="new-password"
-                  placeholder="●●●●●●"
-                  ref={passwordRef}
-                  required
-                  className="mt-3 appearance-none block w-full px-3 py-2 border border-yellow-500 rounded-md shadow-sm bg-transparent outline-none sm:text-sm"
-                />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-0 flex items-center px-2"
-                >
-                  {showPassword ? "Hide" : "Show"}
-                </button>
-              </div>
-            </div>
-
             <div className="pt-2 text-sm text-yellow-500 hover:text-yellow-600 transition-colors flex items-center justify-between">
               <Link href="/signup">
                 <span>Don't have an Account?</span>
-              </Link>
-              <Link href="/forgetPassword">
-                <span>Forget Password</span>
               </Link>
             </div>
             <div>
@@ -94,29 +61,26 @@ const Login = () => {
   );
 };
 
-export default Login;
-
-function Form({ children, passwordRef, emailRef }) {
+export default ForgetPassword;
+function Form({ children, emailRef }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const emailVal = emailRef.current.value;
-    const passwordVal = passwordRef.current.value;
 
-    signInWithEmailAndPassword(auth, emailVal, passwordVal)
-      .then((userCredential) => {
-        const user = userCredential.user;
-
-        emailRef.current.value = "";
-        passwordRef.current.value = "";
-
+    sendPasswordResetEmail(auth, emailVal)
+      .then(() => {
+        alert("Password reset email sent!");
         const redirect = searchParams.get("redirect");
-        router.push(redirect || "/");
+        router.push(redirect || "/login");
       })
       .catch((error) => {
-        console.error(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        alert(errorMessage);
       });
   };
 
