@@ -36,18 +36,18 @@ export default function Navbar() {
 
   const [topPosition, setTopPosition] = useState("150px");
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setTopPosition("20px");
-      } else {
-        setTopPosition("150px");
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 100) {
+  //       setTopPosition("20px");
+  //     } else {
+  //       setTopPosition("150px");
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const [navbarData, setNavbarData] = useState(null);
 
@@ -296,9 +296,9 @@ export default function Navbar() {
       </div>
 
       <div
-        style={{ top: topPosition, transition: "top 300ms ease-out" }}
-        className="fixed right-0 h-20 z-[100]"
-      >
+        style={{  }}
+        className="fixed right-0 z-[100] bottom-0"
+        >
         <div className="border rounded-l-xl border-r-0 p-4 flex flex-col gap-8 py-6 bg-[#363636] max-md:p-2 max-md:py-4 hover:px-6 max-md:hover:px-4 transition-all">
           <a target="_blank" className="hover:scale-110 hover:text-yellow-500 transition-all" href={navbarData?.socialMediaLinks.linkedinLink}>
             <RiLinkedinBoxFill className="size-10 max-md:size-8" />

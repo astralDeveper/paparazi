@@ -66,8 +66,8 @@ const Page = () => {
 
   return (
     <>
-    <section className="pb-20">
-      <div className="w-full max-w-screen-2xl px-6  mx-auto">
+    <section className="pb-20 px-10">
+      <div className="w-full max-w-screen-2xl   mx-auto">
          <a href='/powerplay-blogs' className=' flex items-center gap-1 group my-16 max-sm:my-8 font-semibold w-fit text-[#D2940A]'><RiArrowLeftLine className='group-hover:-translate-x-2 transition-all'/> Back</a>
       </div>
       <div className="w-[60%] max-md:w-[80%] mx-auto mt-10">
@@ -79,7 +79,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="w-full max-w-screen-2xl px-6  mx-auto mt-10 ">
+      <div className="w-full max-w-screen-2xl   mx-auto mt-10 ">
         <h2 className="text-2xl font-semibold max-sm:text-2xl w-full text-[#D2940A]">
           {value.DetailsMainHeading}
         </h2>
@@ -97,7 +97,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="w-[90%]  max-w-screen-2xl px-6  mt-2 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
+      <div className="w-[90%]  max-w-screen-2xl  mt-2 leading-[2rem] max-sm:leading-[1.5rem] max-sm:text-sm">
       <PortableText className=" max-sm:text-sm " value={value.DetailsMainPara2} components={portabletextComponents}/>
       </div>
       </section>

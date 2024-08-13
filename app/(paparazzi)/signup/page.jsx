@@ -68,7 +68,7 @@ const Signup = () => {
       <img
         src="/paparazzi-logo.png"
         alt="Paparazzi House Logo"
-        className="h-36 mx-auto"
+        className="h-60 mx-auto"
       />
 
       <h2 className="mt-20 text-center text-3xl max-sm:text-2xl max-sm:font-medium font-semibold">
